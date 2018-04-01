@@ -1,0 +1,6 @@
+mixin courseForm(course = {})
+  form(action="/addCourse" method="POST")
+    label(for="name") Name
+    input(type="text" name="name")
+    label(for="description") Description
+    textarea(name="description")
