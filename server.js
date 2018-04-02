@@ -1,6 +1,12 @@
 const express = require('express');
 const routes = require('./routes/index');
 const path = require('path');
+const errorHandlers = require('./handlers/errorHandlers');
+const flash = require('connect-flash');
+const session = require('express-session');
+const expressValidator = require('express-validator');
+const helpers = require('./helpers');
+
 
 const app = express();
 
@@ -12,7 +18,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
+app.use(expressValidator());
+
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  // course: new MongoCourse({ mongooseConnection: mongoose.connection })
+}));
+app.use(flash());
+
+// variables locales
+app.use((req, res, next) => {
+  res.locals.flashes = req.flash();
+  res.locals.h = helpers;
+  next();
+});
 
 app.use('/', routes);
+app.use(errorHandlers.notFound);
+app.use(errorHandlers.flashValidationErrors);
+
 
 module.exports = app;

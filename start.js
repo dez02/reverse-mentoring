@@ -1,17 +1,17 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 require('dotenv').config({ path: 'variables.env' });
 
 // Database Connection
-// mongoose.connect(process.env.DATABASE);
-// mongoose.Promise = global.Promise;
-// mongoose.connection.on('error', (err) => {
-//   console.log(`${err.message}`);
-// });
+mongoose.connect(process.env.DATABASE);
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error', (err) => {
+  console.log(`${err.message}`);
+});
 
-// // Import models
-// require('./models/course');
+// Import models
+require('./models/Course');
 
-
+// Start my app
 const app = require('./server');
 
 app.set('port', process.env.PORT || 7777);

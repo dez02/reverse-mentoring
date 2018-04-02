@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h2 #{title}
+  .courses
+    each course in courses
+      h2= course.name
+      p= course.description
