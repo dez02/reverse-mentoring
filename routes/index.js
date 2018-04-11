@@ -1,13 +1,15 @@
 const express = require('express');
-const courseControllers = require('../controllers/course');
+const courseController = require('../controllers/courseController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 const router = express.Router();
 
-router.get('/', catchErrors(courseControllers.getCourses));
-router.get('/courses', courseControllers.getCourses);
-router.get('/addcourse', courseControllers.addCourse);
-router.post('/addcourse', catchErrors(courseControllers.createCourse));
-
+router.get('/', catchErrors(courseController.getCourses));
+router.get('/courses', courseController.getCourses);
+router.get('/addcourse', courseController.addCourse)
+router.post('/addcourse', catchErrors(courseController.createCourse));
+router.post('/addcourse/:id', catchErrors(courseController.updateCourse));
+router.get('/courses/:id/edit', catchErrors(courseController.editCourse));
+router.get('/course/:slug', catchErrors(courseController.getCourseBySlug));
 module.exports = router;
 

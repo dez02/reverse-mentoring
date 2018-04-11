@@ -1,13 +1,16 @@
 mixin courseForm(course = {})
-  form(action="/addCourse" method="POST")
+  form(action=`/addcourse/${course._id || ''}` method="POST" class="card")
+    //- ici jai 2 redirections possibles: soit addcourse soit s'il ya 1 id addcourseid
     label(for="name") Name
-    input(type="text" name="name")
+    input(type="text" name="name" value=course.name)
     label(for="description") Description
-    textarea(name="description")
+    textarea(name="description")= course.description
     -const choices = ['Javascript', 'Html', 'Php', 'Autre']
+    -const tags = course.tags || []
     ul.tags
       each choice in choices
-        .tag
-          input(type="checkbox" id=choice value=choice name="tags")
+        .tag.tag__choices
+          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="Save" class="button")
+

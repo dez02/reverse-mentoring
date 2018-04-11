@@ -1,10 +1,9 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Document
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
   body
     block messages
       if locals.flashes
@@ -16,4 +15,8 @@ html(lang="en")
                 .flash(class=`flash--${category}`)
                   p.flash__text!= message
                   button.flash__remove(onClick="this.parentElement.remove()") &times;
-    block content
+    .content
+      block content
+
+    block script
+       script(src="/dist/App.bundle.js")

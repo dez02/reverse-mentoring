@@ -1,2 +1,12 @@
 mixin courseCard(course = {})
-
+  .course
+    .course__hero
+      .course__actions
+        .course__action.course__action--edit
+          a(href=`/courses/${course._id}/edit`)
+           button OK
+      img(src=`/uploads/${course.photo || 'course.png'}`)
+      h2.title
+        a(href=`/course/${course.slug}`) #{course.name}
+    .course__details
+      p #{course.description}
