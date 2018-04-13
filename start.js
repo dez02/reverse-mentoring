@@ -3,13 +3,14 @@ require('dotenv').config({ path: 'variables.env' });
 
 // Database Connection
 mongoose.connect(process.env.DATABASE);
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; // dis à mongoose d'utiliser ES6
 mongoose.connection.on('error', (err) => {
   console.log(`${err.message}`);
 });
 
 // Import models
-require('./models/Course');
+require('./models/courseModel');
+require('./models/userModel');
 
 // Start my app
 const app = require('./server');

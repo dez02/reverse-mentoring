@@ -1,12 +1,13 @@
+//- me permet de gerer l'edition de mes cards
 mixin courseCard(course = {})
   .course
     .course__hero
       .course__actions
         .course__action.course__action--edit
-          a(href=`/courses/${course._id}/edit`)
-           button OK
+          a(href=`/courses/edit/${course._id}`)
+           button Editer
       img(src=`/uploads/${course.photo || 'course.png'}`)
       h2.title
-        a(href=`/course/${course.slug}`) #{course.name}
+        a(href=`/courses/${course.slug}`) #{course.name}
     .course__details
       p #{course.description}

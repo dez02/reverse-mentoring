@@ -15,11 +15,15 @@ label {
 }
 
 .form {
-  background: rgb(221, 147, 147);
+  background: white;
   padding: 2rem;
   box-shadow: $grad;
   & + .form {
     margin-top: 4rem;
+  }
+
+  .form-control {
+    color: lightgrey;
   }
 
   h2 {
@@ -30,3 +34,6 @@ label {
     border-bottom: 1px solid $grey;
   }
 }
+
+
+
