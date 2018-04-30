@@ -5,6 +5,12 @@ html(lang="en")
     link(rel='stylesheet', href='/dist/style.css')
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
+    block header
+      header.top
+        nav.nav
+          .nav__section.nav__section--pages
+            li.nav__item
+
     block messages
       if locals.flashes
         .inner

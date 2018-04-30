@@ -1,6 +1,6 @@
 mixin courseForm(course = {})
   form(action=`/courses/add/${course._id || ''}` method="POST" class="card")
-    //- ici jai 2 redirections possibles: soit courses/add soit s'il ya 1 id add/${course._id 
+    //- ici jai 2 redirections possibles: soit courses/add soit s'il ya 1 id add/${course._id
     label(for="name") Name
     input(type="text" name="name" value=course.name)
     label(for="description") Description

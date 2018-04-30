@@ -16,7 +16,7 @@ exports.addCourse = (req, res) => {
 // Poster un cours
 exports.createCourse = async (req, res) => {
   const course = await (new Course(req.body)).save();
-  req.flash('success', `Sucessfully Created ${course.name}`);
+  req.flash('success', `Successfully Created ${course.name}`);
   res.redirect('/courses');
 };
 

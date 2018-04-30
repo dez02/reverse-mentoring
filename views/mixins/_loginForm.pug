@@ -1,5 +1,5 @@
 mixin loginForm()
-  form.form(action="/login" method="POST")
+  form.form(action=`/login/${h.siteName}` method="POST")
     label(for="email" name="Email") Adresse mail
     input.form-control(type="email" name="email" value="exemple@monmail.com")
     label(for="password" name="password") Mot de passe

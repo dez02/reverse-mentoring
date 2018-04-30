@@ -11,7 +11,7 @@ exports.registerForm = (req, res) => {
 // middleware pour vérifier les données de mon formulaire
 
 exports.validateRegister = (req,res,next) => {
-
+  req.sanitizedBody
 };
 
 
