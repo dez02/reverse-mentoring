@@ -1,10 +1,12 @@
 const express = require('express');
 const userController = require('../controllers/userController');
 const { catchErrors } = require('../handlers/errorHandlers');
-const router = express.Router();
+const userRouter = express.Router();
 
-//userLogin
-router.get('/login', userController.loginForm);
-router.get('/inscription', userController.registerForm);
+// userLogin
+userRouter.get('/login', userController.loginForm);
+userRouter.get('/inscription', userController.registerForm);
+userRouter.post('/inscription', userController.validateRegister);
 
-module.exports = router;
+
+module.exports = userRouter;

@@ -1,5 +1,5 @@
 mixin registerForm()
-  form.form(action=`/inscription/${h.siteName}` method="POST")
+  form.form(action=`/user/inscription` method="POST")
     label(for="name") Nom
     input(type="text" name="nom")
     label(for="email" name="email") Adresse mail

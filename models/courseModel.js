@@ -17,7 +17,7 @@ const courseSchema = new mongoose.Schema({
   tags: [String],
 });
 
-courseSchema.pre('save', function(next) {
+courseSchema.pre('save', function (next) {
   if (!this.isModified('name')) {
     next();
     return;
