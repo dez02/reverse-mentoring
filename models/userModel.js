@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-mongoose.Promise = global.Promise;
-const mongodbErrorHandler = require('mongoose-mongodb-errors'); // me permet de customiser mes messages d'erreurs côté navigateur
+const md5 = require('md5');
 const validator = require('validator'); // make sure the email is a proper validation.
 // It takes an array with 2 values. first: how to validate
 // second: the error message si on se connecte avec une adresse erronée
+const mongodbErrorHandler = require('mongoose-mongodb-errors'); // me permet de customiser mes messages d'erreurs côté navigateur
 const passportLocalMongoose = require('passport-local-mongoose');
+
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
+
 
 const userSchema = new Schema({
   email: {
@@ -15,16 +17,24 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
     validate: [validator.isEmail, 'Adresse Email invalide'], // verifie si l'email est valide
-    require: "Veuillez rentrer une adresse mail s'il vous plaît",
+    required: "Veuillez rentrer une adresse mail s'il vous plaît",
   },
   name: {
     type: String,
     trim: true,
-    require: "Veuillez rentrer un nom s'il vous plaît",
+    required: "Veuillez rentrer un nom s'il vous plaît",
   },
+});
+
+userSchema.virtual('gravatar').get(function() {
+  const hash = md5(this.email);
+  return`https://gravatar.com/avatar/${hash}?s=50`; // penser á changer l
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model('User', userSchema);
+
+
+// store passw in the bdd with passport

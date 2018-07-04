@@ -7,7 +7,10 @@ const session = require('express-session');
 const expressValidator = require('express-validator');
 const helpers = require('./helpers');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const promisify = require('es6-promisify');
 
+require('./handlers/passport');
 
 const app = express();
 
@@ -27,14 +30,25 @@ app.use(session({
   key: process.env.KEY,
   resave: false,
   saveUninitialized: false,
-  // course: new MongoCourse({ mongooseConnection: mongoose.connection })
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 // variables locales
 app.use((req, res, next) => {
   res.locals.flashes = req.flash();
   res.locals.h = helpers;
+  res.locals.user = req.user || null;
+  res.locals.currentPath = req.path;
+  next();
+});
+
+// promisify some callback based APIs
+app.use((req, res, next) => {
+  req.login = promisify(req.login, req);
   next();
 });
 

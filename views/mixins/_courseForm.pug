@@ -1,16 +1,20 @@
 mixin courseForm(course = {})
-  form(action=`/courses/add/${course._id || ''}` method="POST" class="card")
+  form(action=`/courses/add/${course._id || ''}` method="POST" enctype="multipart/form-data")
     //- ici jai 2 redirections possibles: soit courses/add soit s'il ya 1 id add/${course._id
-    label(for="name") Name
-    input(type="text" name="name" value=course.name)
-    label(for="description") Description
-    textarea(name="description")= course.description
-    -const choices = ['Javascript', 'Html', 'Php', 'Autre']
-    -const tags = course.tags || []
-    ul.tags
-      each choice in choices
-        .tag.tag__choices
-          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
-          label(for=choice) #{choice}
-    input(type="submit" value="Enregistrer" class="button")
 
+    form-group
+      label(for="name") Name
+      input.form-control(type="text" name="name" value=course.name)
+    form-group
+      label.mt-5(for="description") Description
+      textarea.form-control(name="description" rows="3")= course.description
+
+
+    //- Image upload
+    form-group
+      label.mt-5(for="photo") Photo
+        input.form-control-file(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+        if course.photo
+          img(src=`/uploads/${course.photo}`, alt=course.name with=200)
+    form-group
+      button.btn.btn-primary(type="submit") Enregistrer

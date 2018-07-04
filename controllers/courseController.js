@@ -1,19 +1,55 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
+const jimp = require('jimp'); // resizer mon img
+const uuid = require('uuid'); // uniq identifier
 
 const Course = mongoose.model('Course');
+
+// Upload d'images
+const multerOptions = {
+  storage: multer.memoryStorage(), // lieu de stockage
+  fileFilter(req, file, next) { // type de fichier que j'autorise
+    const isPhoto = file.mimetype.startsWith('image/');
+    if (isPhoto) {
+      next(null, true);
+    } else {
+      next({ message: "That filetype isn't allowed" }, false);
+    }
+  },
+};
 
 // Affiche tous les cours
 exports.getCourses = async (req, res) => {
   const courses = await Course.find();
-  res.render('courses', { title: 'Popular Web Programming Topics', courses });
+  res.render('courses', { courses });
 };
 
 // Ajouter un cours
 exports.addCourse = (req, res) => {
-  res.render('courseAdd', { title: 'Ajouter Un Cours' });
+  res.render('courseAdd', { title: 'Ajouter Une Activité' });
 };
 
-// Poster un cours
+// Upload
+exports.upload = multer(multerOptions).single('photo');
+// cette function me permet de stocker temporairemm des photos sur mon server et non sur mon disk
+
+exports.resize = async (req, res, next) => {
+  if (!req.file) {
+    next();
+    return;
+  }
+  const extension = req.file.mimetype.split('/')[1];
+  req.body.photo = `${uuid.v4()}.${extension}`;
+
+  // et lá on size
+  const photo = await jimp.read(req.file.buffer);
+  await photo.resize(800, jimp.AUTO);
+  await photo.write(`./public/uploads/${req.body.photo}`);
+  // console.log(req.file);
+  next();
+};
+
+// Poster un cours (POST)
 exports.createCourse = async (req, res) => {
   const course = await (new Course(req.body)).save();
   req.flash('success', `Successfully Created ${course.name}`);

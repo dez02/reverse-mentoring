@@ -2,27 +2,55 @@ doctype html
 html(lang="en")
   head
     title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
     link(rel='stylesheet', href='/dist/style.css')
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body
     block header
       header.top
         nav.nav
           .nav__section.nav__section--pages
             li.nav__item
+              a.nav__link.nav__link--logo(href="/courses/add")
+                != h.icon('boutonadd')
+            each item in h.menu
+              //- li.nav__item
+              //-   a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
+              //-     != h.icon(item.icon)
+              //-     span #{item.title}
+          .nav__section.nav__section--search
+            .search
+              input.search__input(type="text" placeholder="Activité..." name="search")
+              .search__results
+          .nav__section.nav__section--user
+            if user
+              li.nav__item: a.nav__link(href="/hearts", class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))
+                != h.icon('course')
+                span.heart-count #{user.hearts && user.hearts.length}
+              li.nav__item: a.nav__link(href="/user/logout", class=(currentPath.startsWith('/user/logout') ? 'nav__link--active' : ''))
+                != h.icon('logout')
+                span Logout
+              li.nav__item: a.nav__link(href="/account", class=(currentPath.startsWith('/account') ? 'nav__link--active' : ''))
+                img.avatar(src=user.gravatar)
+            else
+              li.nav__item: a.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) Register
+              li.nav__item: a.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) Log In
 
     block messages
       if locals.flashes
         .inner
           .flash-messages
             -const categories = Object.keys(locals.flashes)
-            each category in categories
-              each message in flashes[category]
-                .flash(class=`flash--${category}`)
-                  p.flash__text!= message
-                  button.flash__remove(onClick="this.parentElement.remove()") &times;
-    .content
-      block content
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`flash--${category}`)
+                    p.flash__text!= message
+                    button.flash__remove(onClick="this.parentElement.remove()") &times;
+      .content
+        block content
 
     block script
-       script(src="/dist/App.bundle.js")
+      script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
+      script(src="/dist/App.bundle.js")

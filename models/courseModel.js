@@ -15,6 +15,12 @@ const courseSchema = new mongoose.Schema({
     trim: true,
   },
   tags: [String],
+  photo: String,
+  // mentor: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: 'User',
+  //   required: 'You must supply a mentor',
+  // },
 });
 
 courseSchema.pre('save', function (next) {

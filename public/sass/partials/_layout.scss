@@ -1,9 +1,8 @@
 html {
   font-size: 10px;
 }
-
+ // á mettre en commentaire si je ne veux pas avoir le trait de la navbar
 body {
-  background: $purple;
   background:#efefef;
   &:before {
     content: '';
@@ -20,4 +19,12 @@ body {
   @media all and (max-width: 900px) {
     padding: 2rem;
   }
+}
+
+.img-thumbnail {
+  height: 150px;
+}
+
+.jumbotron {
+  background-color: darkgoldenrod;
 }

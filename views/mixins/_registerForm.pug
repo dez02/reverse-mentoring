@@ -1,11 +1,14 @@
 mixin registerForm()
-  form.form(action=`/user/inscription` method="POST")
+  form.form(action="/user/inscription" method="POST")
+    h2 S'inscrire
     label(for="name") Nom
-    input(type="text" name="nom")
-    label(for="email" name="email") Adresse mail
-    input(type="email" name="email")
-    label(for="confirm-password") Confirmation du mot de passe
-    input(type="confirm-password" name="confirm-password")
-    input.button(type="submit" value="S'inscrire")
+    input.form-control(type="text" name="name")
+    label(for="email") Adresse mail
+    input.form-control(type="email" name="email")
+    label(for="password") Mot de passe
+    input.form-control(type="password" name="password")
+    label(for="password-confirm") Confirmation du mot de passe
+    input.form-control(type="password" name="password-confirm")
+    input.button.btn.btn-primary.mt-5(type="submit" value="S'inscrire")
 
 

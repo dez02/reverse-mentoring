@@ -3,8 +3,43 @@ extends layout
 include mixins/_courseCard
 
 block content
+  //- jumbotron pas mis de container pq je v q mon jum ocp tte la lg
+    // todo transformer button en lien
+
+
+  a(href="/user/inscription")
+    //- button.btn.btn-outline-success.btn-lg.float-right(type="button") Register
+  .jumbotron.jumbotron-fluid.text-black.mt-0
+    .container.text-sm-center
+      h1.display-4 Reverse Mentoring
+      p.lead #Dream and Do
+  //- jumbotron
+
+
+  //- input search
   .inner
-    h2= title
+    .col-md-6.mx-auto
+      .input-group
+        input.form-control(type="text" placeholder="Rechercher sur le site" aria-label="Je cherche une activité")
+        span.input-group-btn
+          button.btn.btn-success(type="button") Go!
+  //- input search
+
+  //- cards
+  .inner
     .courses
       each course in courses
         +courseCard(course)
+
+
+  //- cards
+
+  //- jumbotron footer
+  .jumbotron.jumbotron-fluid.text-black.mt-5.mb-0
+    .container.text-sm-center
+      a(href="/user/mentor")
+        h1.display-4 Deviens Mentor
+        p.lead dd@reversementoring.com
+
+
+

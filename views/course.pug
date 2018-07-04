@@ -1,4 +1,21 @@
 extends layout
 
 block content
-  h2= title
+  .container.mt-5
+    h2
+      a.text-info(href=`/courses/${course.slug}`) #{course.name}
+
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores ex error provident illo cupiditate dolore corporis optio, numquam similique enim iusto corrupti possimus facere nemo earum! Saepe, aut in
+    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores ex error provident illo cupiditate dolore corporis optio, numquam similique enim iusto corrupti possimus facere nemo earum! Saepe, aut in
+
+
+
+  //- rajouter jumbotron
+  .container
+    .row
+      .col-xs-3
+        img.img-thumbnail(src=`/uploads/${course.photo || 'thumb1.jpg'}`).rounded-circle.mt-5
+      .col-md-4
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed eum totam quo dolorum esse quos maxime quidem facilis voluptatibus sapiente id fugit, ad velit officiis, voluptate quae pariatur quisquam architecto!
+
+

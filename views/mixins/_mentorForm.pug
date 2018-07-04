@@ -1,0 +1,17 @@
+mixin mentorForm()
+  .container
+    .row
+      .col-sm-4
+        //- todo: modal pr modifier photo
+        img.img-thumbnail(src="/uploads/thumb1.jpg").mt-5
+      .col-sm-4
+        .form.pt-5
+          input.form-control(type="text" name="Name" placeholder="Name").my-4
+          input.form-control(type="text" name="Prenom" placeholder="Prénom").my-4
+          input.form-control(type="mail" name="Mail" placeholder="Email").my-4
+
+
+    .row
+      .col
+        textarea
+
