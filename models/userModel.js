@@ -24,6 +24,10 @@ const userSchema = new Schema({
     trim: true,
     required: "Veuillez rentrer un nom s'il vous plaît",
   },
+  // course: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: 'Course',
+  // },
 });
 
 userSchema.virtual('gravatar').get(function() {

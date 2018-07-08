@@ -24,6 +24,27 @@ body {
 .jumbotron {
   background-color: darkgoldenrod; }
 
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6; }
+  input.input--error, textarea.input--error {
+    border-color: red; }
+
+label {
+  font-size: 2rem;
+  letter-spacing: 0px;
+  /* padding: 5px 0; */
+  display: block; }
+
+.form {
+  width: 70%;
+  background: white;
+  padding: 2rem;
+  box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
+  .form + .form {
+    margin-top: 4rem; }
+
 .courses {
   display: -ms-flexbox;
   display: flex;
@@ -614,6 +635,7 @@ a {
   text-align: center; }
 
 .nav {
+  height: 100px;
   display: -ms-flexbox;
   display: flex;
   list-style: none;

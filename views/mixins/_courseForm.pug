@@ -6,13 +6,13 @@ mixin courseForm(course = {})
       label(for="name") Name
       input.form-control(type="text" name="name" value=course.name)
     form-group
-      label.mt-5(for="description") Description
+      label(for="description") Description
       textarea.form-control(name="description" rows="3")= course.description
 
 
     //- Image upload
     form-group
-      label.mt-5(for="photo") Photo
+      label(for="photo") Photo
         input.form-control-file(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
         if course.photo
           img(src=`/uploads/${course.photo}`, alt=course.name with=200)

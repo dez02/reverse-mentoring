@@ -14,13 +14,13 @@ const courseSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  tags: [String],
+  date: Date,
   photo: String,
-  // mentor: {
-  //   type: mongoose.Schema.ObjectId,
-  //   ref: 'User',
-  //   required: 'You must supply a mentor',
-  // },
+  mentor: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You must supply a mentor',
+  },
 });
 
 courseSchema.pre('save', function (next) {

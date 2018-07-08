@@ -26,4 +26,7 @@ courseRouter.post('/add/:id',
 
 courseRouter.get('/:slug', catchErrors(courseController.getCourseBySlug)); // trouver une activité via le slug(nom)
 
+// courseRouter.get('/api/search', catchErrors(courseController.searchCourse));
+
+
 module.exports = courseRouter;

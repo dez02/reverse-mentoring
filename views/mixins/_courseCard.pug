@@ -1,16 +1,17 @@
 //- me permet de gerer l'affichage et l'édition de mes cards
 mixin courseCard(course = {})
-    .course
-      .course__hero
-        .course__actions
+  .course
+    .course__hero
+      .course__actions
+        if user && course.mentor.equals(user._id)
           .course__action.course__action--edit
             a(href=`/courses/edit/${course._id}`)
               button Editer
-        img(src=`/uploads/${course.photo || 'code.jpg'}`)
-        h2.title
-          a(href=`/courses/${course.slug}`) #{course.name}
-      .course__details
-        p= course.description.split(' ').slice(0, 25).join(' ')
+      img(src=`/uploads/${course.photo || 'code.jpg'}`)
+      h2.title
+        a(href=`/courses/${course.slug}`) #{course.name}
+    .course__details
+      p= course.description.split(' ').slice(0, 25).join(' ')
 
 
 

@@ -7,22 +7,30 @@ block content
     // todo transformer button en lien
 
 
-  a(href="/user/inscription")
+  //- a(href="/user/inscription")
     //- button.btn.btn-outline-success.btn-lg.float-right(type="button") Register
   .jumbotron.jumbotron-fluid.text-black.mt-0
     .container.text-sm-center
       h1.display-4 Reverse Mentoring
-      p.lead #Dream and Do
+      p La plateforme pour accélérer le développement de vos talents
   //- jumbotron
 
 
   //- input search
   .inner
     .col-md-6.mx-auto
-      .input-group
-        input.form-control(type="text" placeholder="Rechercher sur le site" aria-label="Je cherche une activité")
-        span.input-group-btn
-          button.btn.btn-success(type="button") Go!
+      //- .input-group
+      //-   input.form-control(type="text" placeholder="Rechercher sur le site" aria-label="Je cherche une activité")
+      //-   span.input-group-btn
+      //-     button.btn.btn-success(type="button") Go!
+      .nav__section.nav__section--search
+        .input-group.mb-3
+          .search
+            input.form-control.search__input(type="text" placeholder="Activité..." arial-label="Activité" name="search")
+            .input-group-append
+            .search__results
+          button.btn.btn-outline-secondary(type="button") Go!
+
   //- input search
 
   //- cards

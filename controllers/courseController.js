@@ -18,18 +18,7 @@ const multerOptions = {
   },
 };
 
-// Affiche tous les cours
-exports.getCourses = async (req, res) => {
-  const courses = await Course.find();
-  res.render('courses', { courses });
-};
-
-// Ajouter un cours
-exports.addCourse = (req, res) => {
-  res.render('courseAdd', { title: 'Ajouter Une Activité' });
-};
-
-// Upload
+// 1-Upload
 exports.upload = multer(multerOptions).single('photo');
 // cette function me permet de stocker temporairemm des photos sur mon server et non sur mon disk
 
@@ -43,22 +32,43 @@ exports.resize = async (req, res, next) => {
 
   // et lá on size
   const photo = await jimp.read(req.file.buffer);
-  await photo.resize(800, jimp.AUTO);
+  await photo.resize(250, jimp.AUTO);
   await photo.write(`./public/uploads/${req.body.photo}`);
   // console.log(req.file);
   next();
 };
 
-// Poster un cours (POST)
+// GET cours jínterroge ma base pour afficher tous les cours
+exports.getCourses = async (req, res) => {
+  const courses = await Course.find();
+  res.render('courses', { courses });
+};
+
+// Ajouter un cours
+exports.addCourse = (req, res) => {
+  res.render('courseAdd', { title: 'Ajouter Une Activité' });
+};
+
+// Poster un cours (POST) Créer
 exports.createCourse = async (req, res) => {
+  req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
+  // le mentor est bien le mm q celui du user
   const course = await (new Course(req.body)).save();
   req.flash('success', `Successfully Created ${course.name}`);
   res.redirect('/courses');
 };
 
+// function qui va me permettre une fois mon cours trouvé de confirmer que le mentor est bien celui de mon cours
+const confirmOwner = (course, user) => {
+  if (!course.mentor.equals(user._id)) {
+    throw Error('You must own a course in order to edit it!');
+  }
+};
+
 // Editer un cours(GET)
 exports.editCourse = async (req, res) => {
   const course = await Course.findOne({ _id: req.params.id });
+  confirmOwner(course, req.user);
   res.render('editCourse', { title: `Edit ${course.name}`, course }); // À VOIR
 };
 
@@ -69,22 +79,27 @@ exports.updateCourse = async (req, res) => {
     req.body,
     {
       new: true, // retourne le nouveau cours mis à jour
-      runValidators: true, // force le model à exécuter les require qu'il contient
+      runValidators: true, // force le model à exécuter les required qu'il contient
     },
   )
     .exec();
   req.flash('Success', `Sucessfully updated ${course.name}. <a href="/courses/${course.slug}">Voir le Cours<a>`);
   res.redirect(`/courses/edit/${course._id}`);
 };
-// FindOneAndUpdate prends 3 paramètes:
-// - la requête
-// -les datas ce qu'on veut updater cád dire les datas que l'on passe dans le body
-// -les options
 
 // Find the course given the slug
 exports.getCourseBySlug = async (req, res, next) => {
-  const course = await Course.findOne({ slug: req.params.slug });
+  const course = await Course.findOne({ slug: req.params.slug }).populate('mentor');
   if (!course) return next(); // middleware next me permet de passer à la suite et
   // d'afficher un 404 si jms mon cours n'existe pas
   res.render('course', { course, title: course.name });
 };
+
+// exports.searchCourse = async (req, res) => {
+//   const courses = await Course.find({
+//     $text: {
+//       $search: req.query.q
+//     },
+//   });
+// };
+// pour comparer un ObjectId et une string on peut utiliser la méthode(equals)

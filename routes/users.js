@@ -6,26 +6,35 @@ const authController = require('../controllers/authController');
 const userRouter = express.Router();
 
 
-// userLogin
+// GET userLogin
 userRouter.get('/login', userController.loginForm); // formulaire de connexion en get on récup le form
+
+// POST userLogin
 userRouter.post('/login', authController.login);
 
 // Logout
 userRouter.get('/logout', authController.logout);
 
-// Register
+// GET Register
 userRouter.get('/inscription', userController.registerForm); // form inscription
 
+// POST Register
 userRouter.post('/inscription',
   userController.validateRegister,  // ici on valide d'abord le formulaire d'inscription
   userController.register,
   authController.login,
 );
-// UserAccount
 
-userRouter.get('/account', userController.account);
+// GET UserAccount
+userRouter.get('/account', authController.isLoggedIn, userController.account); // on vérifie bien q le user est connecté
+
+// POST userAccount
+userRouter.post('/account', catchErrors(userController.updateAccount));
+
+
 // getMentorForm
-// userRouter.get('/mentor', userController.mentorForm); // form d'inscrip mentor en get
+// userRouter.get('/mentors', userController.getMentorCourse);
+userRouter.get('/mentor', userController.mentorForm); // form d'inscrip mentor en get
 
 
 module.exports = userRouter;
