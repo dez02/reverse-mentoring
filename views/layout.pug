@@ -12,6 +12,7 @@ html(lang="en")
             li.nav-tem.nav__item
               a.nav-link.nav__link.nav__link--logo(href="/")
                 != h.icon('logo_B')
+              p Accueil
 
             if user
               ul.nav.justify-content-end
@@ -26,6 +27,8 @@ html(lang="en")
                   img.avatar(src=user.gravatar)
             else
               ul.nav.justify-content-end
+                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor", class=(currentPath.startsWith('/user/mentor') ? 'nav__link--active' : '')) Find a Mentor
+                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor", class=(currentPath.startsWith('/user/mentor') ? 'nav__link--active' : '')) Become a Mentor
                 li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) Register
                 li.nav-item.nav__item: a.nav-link.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) Log In
 

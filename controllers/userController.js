@@ -17,7 +17,11 @@ exports.loginForm = (req, res) => {
 
 // MentorForm
 exports.mentorForm = (req, res) => {
-  res.render('mentorForm', { title: 'Je deviens mentor!' });
+  const user = { image: 'jc1.jpeg' };
+  res.render('mentorForm', {
+    title: 'Je deviens mentor!',
+    user: user
+  });
 };
 
 // middleware pour vérifier les données de mon formulaire

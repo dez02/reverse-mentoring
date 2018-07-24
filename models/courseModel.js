@@ -16,11 +16,22 @@ const courseSchema = new mongoose.Schema({
   },
   date: Date,
   photo: String,
+  domaine: String,
   mentor: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: 'You must supply a mentor',
   },
+  mentoree: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You must supply a mentor',
+  },
+});
+
+courseSchema.index({
+  name: 'text',
+  description: 'text',
 });
 
 courseSchema.pre('save', function (next) {

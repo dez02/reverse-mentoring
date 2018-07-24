@@ -24,15 +24,14 @@ const userSchema = new Schema({
     trim: true,
     required: "Veuillez rentrer un nom s'il vous plaît",
   },
-  // course: {
-  //   type: mongoose.Schema.ObjectId,
-  //   ref: 'Course',
-  // },
+  image: {
+    type: String,
+  },
 });
 
 userSchema.virtual('gravatar').get(function() {
   const hash = md5(this.email);
-  return`https://gravatar.com/avatar/${hash}?s=50`; // penser á changer l
+  return`https://gravatar.com/avatar/${hash}?s=50`; 
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

@@ -5,7 +5,7 @@
 // import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
 import { $, $$ } from './modules/bling';
-// import typeAhead from './modules/typeAhead';
+import typeAhead from './modules/typeAhead';
 
 
-// typeAhead($('.search'));
+typeAhead($('.search'));

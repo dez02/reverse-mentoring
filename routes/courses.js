@@ -5,28 +5,37 @@ const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 const courseRouter = express.Router();
-// courses
-// router.get('/', catchErrors(courseController.getCourses));
-courseRouter.get('/', courseController.getCourses); // afficher liste des activités
 
-courseRouter.get('/add', authController.isLoggedIn, courseController.addCourse); // ajouter une activité
+// afficher liste des activités
+courseRouter.get('/', courseController.getCourses);
 
+// ajouter une activité
+courseRouter.get('/add', authController.isLoggedIn, courseController.addCourse);
+
+// créer une activité
 courseRouter.post('/add',
   courseController.upload,
   catchErrors(courseController.resize),
   catchErrors(courseController.createCourse),
-); // créer une activité
+);
 
-courseRouter.get('/edit/:id', catchErrors(courseController.editCourse)); // modifier une activité
+// modifier une activité
+courseRouter.get('/edit/:id', catchErrors(courseController.editCourse));
 
+// trouver et mettre à jour l'activité dans la Bdd
 courseRouter.post('/add/:id',
   courseController.upload,
   catchErrors(courseController.resize),
-  catchErrors(courseController.updateCourse)); // trouver et mettre à jour l'activité dans la Bdd
+  catchErrors(courseController.updateCourse));
 
-courseRouter.get('/:slug', catchErrors(courseController.getCourseBySlug)); // trouver une activité via le slug(nom)
+// trouver une activité via le slug(nom)
+courseRouter.get('/:slug', catchErrors(courseController.getCourseBySlug));
 
-// courseRouter.get('/api/search', catchErrors(courseController.searchCourse));
+// Rechercher un cours dans la barre de recherche front
+courseRouter.get('/api/search', catchErrors(courseController.searchCourses));
+
+// Obtenir la liste des cours d'un mentor
+// courseRouter.get('/:id_mentor', catchErrors(courseController.getCourseMentorId));
 
 
 module.exports = courseRouter;

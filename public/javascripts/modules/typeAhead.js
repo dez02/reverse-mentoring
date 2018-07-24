@@ -1,25 +1,48 @@
-// const axios = require('axios');
+const axios = require('axios');
 
-// function typeAhead(search) {
-//   if (!search) return;
+function searchResultsHTML(courses) {
+  return courses.map((course) => {
+    return `
+      <a href="/courses/${course.slug}" class="search__result">
+        <strong>${course.name}</strong>
+      </a>
+      `;
+  });
+}
 
-//   const searchInput = search.querySelector('input[name="search"]');
-//   const searchResults = search.querySelector('.search__results');
+function typeAhead(search) {
+  if (!search) return;
 
-//   // console.log(searchInput, searchResults);
-//   searchInput.on('input', function() {
-//     // console.log(this.value);
-//     if (!this.value) {
-//       searchResults.style.display = 'none';
-//       return;
-//     }
-//     searchResults.style.display = 'block';
+  const searchInput = search.querySelector('input[name="search"]');
+  const searchResults = search.querySelector('.search__results');
 
-//     axios.get(`/api/search?q=${this.value}`)
-//       .then((res) => {
-//         console.log(res.data);
-//       });
-//   });
-// }
+  // console.log(searchInput, searchResults);
 
-// export default typeAhead;
+  searchInput.on('input', function() {
+    // console.log(this.value);
+
+    if (!this.value) {
+      searchResults.style.display = 'none';
+      return;
+    }
+    searchResults.style.display = 'block';
+
+    axios
+      .get(`courses/api/search?q=${this.value}`)
+      .then((res) => {
+        if (res.data.length) {
+          searchResults.innerHTML = searchResultsHTML(res.data);
+          return;
+        }
+        searchResults.innerHTML = `<div className="search__result">
+        No results for ${this.value} found!
+        </div>
+        `;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+}
+
+export default typeAhead;

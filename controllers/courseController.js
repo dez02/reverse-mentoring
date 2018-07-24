@@ -38,7 +38,7 @@ exports.resize = async (req, res, next) => {
   next();
 };
 
-// GET cours jínterroge ma base pour afficher tous les cours
+// GET la liste des cours j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
   const courses = await Course.find();
   res.render('courses', { courses });
@@ -53,7 +53,7 @@ exports.addCourse = (req, res) => {
 exports.createCourse = async (req, res) => {
   req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
   // le mentor est bien le mm q celui du user
-  const course = await (new Course(req.body)).save();
+  const course = await (new Course(req.body)).save(); // course avec c minuscule représente mon entité
   req.flash('success', `Successfully Created ${course.name}`);
   res.redirect('/courses');
 };
@@ -95,11 +95,24 @@ exports.getCourseBySlug = async (req, res, next) => {
   res.render('course', { course, title: course.name });
 };
 
-// exports.searchCourse = async (req, res) => {
-//   const courses = await Course.find({
-//     $text: {
-//       $search: req.query.q
-//     },
-//   });
+// find a course in the search input
+exports.searchCourses = async (req, res) => {
+  const courses = await Course.find({
+    $text: {
+      $search: req.query.q,
+    },
+  });
+  res.json(courses);
+};
+
+// Get mentorCourse
+
+// exports.getCoursMentorId = async (req, res) => {
+//   course = await Course.find({ _idMentor = req.params.idMentor });
+//   res.render('courseMentor', { title: 'Mes Activités'});
 // };
+
+
+
+
 // pour comparer un ObjectId et une string on peut utiliser la méthode(equals)

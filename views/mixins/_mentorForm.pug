@@ -1,17 +1,43 @@
 mixin mentorForm()
-  .container
-    .row
-      .col-sm-4
-        //- todo: modal pr modifier photo
-        img.img-thumbnail(src="/uploads/thumb1.jpg").mt-5
-      .col-sm-4
-        .form.pt-5
-          input.form-control(type="text" name="Name" placeholder="Name").my-4
-          input.form-control(type="text" name="Prenom" placeholder="Prénom").my-4
-          input.form-control(type="mail" name="Mail" placeholder="Email").my-4
+  .container.mt-5
+    h2.text-center #{title}
+    form
+      .row.mt-5
+        .form-group.col-md-4
+          img.img-thumbnail(src=`/images/${user.image}`)
+        .form.col-md-8
+          .form-group
+            input.form-control.form-control-lg(type="text" name="Name" placeholder="Name")
+          .form-group
+            input.form-control.form-control-lg(type="text" name="Prenom" placeholder="Prénom")
+          .form-group
+            input.form-control.form-control-lg(type="email" name="EMail" placeholder="Email")
+      .row.mt-5
+        .form.col-md-8.form-group
+          label(for="description") Description
+          textarea(class="form-control" rows="5" style="overflow-y: scroll")
+      .row
+        .form.col-md-8
+          .form-group
+            label(for="Activité") Domaine
+            select(class="form-control" id="activité" name="Domaine" placeholder="Domaine")
+              option Immersion
+              option Sport
+              Option Innovation
+          .form-group
+            label(for="Activité") Activités
+            select(class="form-control" id="activité" name="activiteList")
+          .form-group
+            label(for="Activité") Niveau
+            select(class="form-control" id="activité" name="activiteList")
+              option Débutant
+              option Intermédiaire
+              option Avancé
+          .form-group
+            label(for="description") Descriptif
+            textarea(class="form-control" rows="5" style="overflow-y:scroll")
+      button(type="submit" class="btn btn-primary") Ajouter
+    button(type="submit" class="btn btn-primary") Envoyer
 
 
-    .row
-      .col
-        textarea
 
