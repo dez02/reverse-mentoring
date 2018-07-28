@@ -27,10 +27,10 @@ html(lang="en")
                   //- img.avatar(src=user.gravatar)
             else
               ul.nav.justify-content-end
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor", class=(currentPath.startsWith('/user/mentor') ? 'nav__link--active' : '')) Devenir Mentor
+                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : '')) Devenir Mentor
                 li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) S'inscrire
                 li.nav-item.nav__item: a.nav-link.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) S'identifier
-                
+
     block messages
       if locals.flashes
         .inner

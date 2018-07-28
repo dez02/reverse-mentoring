@@ -34,7 +34,8 @@ userRouter.post('/account', catchErrors(userController.updateAccount));
 
 // getMentorForm
 // userRouter.get('/mentors', userController.getMentorCourse);
-userRouter.get('/mentor', userController.mentorForm); // form d'inscrip mentor en get
+userRouter.get('/mentor/form', userController.mentorForm); // form d'inscrip mentor en get
 
+userRouter.post('/mentor/form', catchErrors(userController.registerMentor));
 
 module.exports = userRouter;

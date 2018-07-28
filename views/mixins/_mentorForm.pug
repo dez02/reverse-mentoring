@@ -1,23 +1,32 @@
 mixin mentorForm()
   .container.mt-5
     h2.text-center #{title}
-    form(action="/user/login" method="POST")
+    form(action="/user/mentor/form" method="post")
       .row.mt-5
         .form-group.col-md-4
           //- img.img-thumbnail(src=`/images/${user.image}`)
         .form.col-md-8
-          .form-group
-            input.form-control.form-control-lg(type="text" name="Name" placeholder="Name")
-          .form-group
-            input.form-control.form-control-lg(type="text" name="Prenom" placeholder="Prénom")
-          .form-group
-            input.form-control.form-control-lg(type="email" name="EMail" placeholder="Email")
+          if user
+            .form-group
+              input.form-control.form-control-lg(type="text" name="name" disabled="disabled" value=user.name)
+            .form-group
+              input.form-control.form-control-lg(type="email" name="email" disabled="disabled" value=user.email)
+          else
+            .form-group
+              input.form-control.form-control-lg(type="text" name="name" placeholder="Name")
+            .form-group
+              input.form-control.form-control-lg(type="password" name="password" placeholder="Password")
+            .form-group
+              input.form-control.form-control-lg(type="email" name="email" placeholder="Email")
       .row.mt-5
         .form.col-md-8.form-group
           label(for="description") Description
-          textarea(class="form-control" rows="5" style="overflow-y: scroll")
+          if user
+            textarea(name="description" class="form-control" rows="5" style="overflow-y: scroll")=user.description
+          else
+            textarea(name="description" class="form-control" rows="5" style="overflow-y: scroll")
 
-    button(type="submit" class="btn btn-secondary btn-lg ") Envoyer
+      button(type="submit" class="btn btn-secondary btn-lg ") Envoyer
 
 
 

@@ -77,13 +77,27 @@ exports.register = async (req, res, next) => {
 // Become mentor
 exports.registerMentor = async (req, res, next) => {
   // if logged -> get connected user -> isMentor = true
+  if (req.user) {
+    req.user = await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $set: { isMentor: true, description: req.body.description } },
+      { new: true, runValidators: true, context: 'query' },
+    );
+  } else {
   // else -> create a new user -> isMentor = true
+    const user = new User({
+      email: req.body.email,
+      name: req.body.name,
+      description: req.body.description,
+      isMentor: true,
+    });
 
-  const user = new User({ email: req.body.email, name: req.body.name });
-  const register = promisify(User.register, User); // on enregistre ds la bdd
-  await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
-  // la méthode register que nous transformons en promesse
-  next();
+    const register = promisify(User.register, User); // on enregistre ds la bdd
+    await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
+    // la méthode register que nous transformons en promesse
+  }
+
+  res.redirect('/');
 };
 
 // ProfileAccount user
