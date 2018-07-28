@@ -112,7 +112,4 @@ exports.searchCourses = async (req, res) => {
 //   res.render('courseMentor', { title: 'Mes Activités'});
 // };
 
-
-
-
 // pour comparer un ObjectId et une string on peut utiliser la méthode(equals)

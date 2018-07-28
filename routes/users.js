@@ -20,7 +20,7 @@ userRouter.get('/inscription', userController.registerForm); // form inscription
 
 // POST Register
 userRouter.post('/inscription',
-  userController.validateRegister,  // ici on valide d'abord le formulaire d'inscription
+  userController.validateRegister, // ici on valide d'abord le formulaire d'inscription
   userController.register,
   authController.login,
 );

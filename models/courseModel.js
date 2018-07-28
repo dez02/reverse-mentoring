@@ -34,7 +34,7 @@ courseSchema.index({
   description: 'text',
 });
 
-courseSchema.pre('save', function (next) {
+courseSchema.pre('save', (next) => {
   if (!this.isModified('name')) {
     next();
     return;
