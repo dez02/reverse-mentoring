@@ -1,10 +1,10 @@
 mixin mentorForm()
   .container.mt-5
     h2.text-center #{title}
-    form
+    form(action="/user/login" method="POST")
       .row.mt-5
         .form-group.col-md-4
-          img.img-thumbnail(src=`/images/${user.image}`)
+          //- img.img-thumbnail(src=`/images/${user.image}`)
         .form.col-md-8
           .form-group
             input.form-control.form-control-lg(type="text" name="Name" placeholder="Name")
@@ -16,28 +16,8 @@ mixin mentorForm()
         .form.col-md-8.form-group
           label(for="description") Description
           textarea(class="form-control" rows="5" style="overflow-y: scroll")
-      .row
-        .form.col-md-8
-          .form-group
-            label(for="Activité") Domaine
-            select(class="form-control" id="activité" name="Domaine" placeholder="Domaine")
-              option Immersion
-              option Sport
-              Option Innovation
-          .form-group
-            label(for="Activité") Activités
-            select(class="form-control" id="activité" name="activiteList")
-          .form-group
-            label(for="Activité") Niveau
-            select(class="form-control" id="activité" name="activiteList")
-              option Débutant
-              option Intermédiaire
-              option Avancé
-          .form-group
-            label(for="description") Descriptif
-            textarea(class="form-control" rows="5" style="overflow-y:scroll")
-      button(type="submit" class="btn btn-primary") Ajouter
-    button(type="submit" class="btn btn-primary") Envoyer
+
+    button(type="submit" class="btn btn-secondary btn-lg ") Envoyer
 
 
 

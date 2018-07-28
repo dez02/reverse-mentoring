@@ -3,7 +3,7 @@ html {
   font-size: 10px; }
 
 body {
-  background: #efefef; }
+  background: #ffffff; }
   body:before {
     content: '';
     display: block;
@@ -22,7 +22,7 @@ body {
   height: 150px; } */
 
 .jumbotron {
-  background-color: darkgoldenrod; }
+  background-color: #f8bc32; }
 
 input, textarea {
   width: 100%;
@@ -39,7 +39,7 @@ label {
 
 .form {
   width: 70%;
-  background: white;
+  background: #FFC40E;
   padding: 2rem;
   box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
   .form + .form {
@@ -493,6 +493,7 @@ progress {
  * Remove the default vertical scrollbar in IE.
  */
 textarea {
+
   overflow: auto; }
 
 /**
@@ -738,8 +739,19 @@ a {
 
 
   .search__input {
-    width: 350px;
+    width: 550px;
     font-size: 2rem;
   }
+
+  .container-fluid.jumbotron{
+    background-image: url("/images/reverse-mentoringjum.png");
+    /* background-repeat: no-repeat; */
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    padding: 0;
+  }
+
+
 
 /*# sourceMappingURL=style.css.map*/

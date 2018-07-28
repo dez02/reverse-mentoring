@@ -16,5 +16,6 @@ mixin courseForm(course = {})
         input.form-control-file(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
         if course.photo
           img(src=`/uploads/${course.photo}`, alt=course.name with=200)
+        //- if  user && course.mentor.equals(user._id)
     form-group
       button.btn.btn-primary(type="submit") Enregistrer

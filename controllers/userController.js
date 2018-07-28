@@ -17,10 +17,9 @@ exports.loginForm = (req, res) => {
 
 // MentorForm
 exports.mentorForm = (req, res) => {
-  const user = { image: 'jc1.jpeg' };
+  // TODO get user connected
   res.render('mentorForm', {
     title: 'Je deviens mentor!',
-    user: user
   });
 };
 
@@ -68,6 +67,18 @@ exports.validateRegister = (req, res, next) => {
 
 // Register
 exports.register = async (req, res, next) => {
+  const user = new User({ email: req.body.email, name: req.body.name });
+  const register = promisify(User.register, User); // on enregistre ds la bdd
+  await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
+  // la méthode register que nous transformons en promesse
+  next();
+};
+
+// Become mentor
+exports.registerMentor = async (req, res, next) => {
+  // if logged -> get connected user -> isMentor = true
+  // else -> create a new user -> isMentor = true
+
   const user = new User({ email: req.body.email, name: req.body.name });
   const register = promisify(User.register, User); // on enregistre ds la bdd
   await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit

@@ -27,11 +27,15 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  isMentor: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-userSchema.virtual('gravatar').get(function() {
+userSchema.virtual('gravatar').get(() => {
   const hash = md5(this.email);
-  return`https://gravatar.com/avatar/${hash}?s=50`; 
+  return `https://gravatar.com/avatar/${hash}?s=50`;
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
