@@ -37,5 +37,4 @@ courseRouter.get('/api/search', catchErrors(courseController.searchCourses));
 // Obtenir la liste des cours d'un mentor
 // courseRouter.get('/:id_mentor', catchErrors(courseController.getCourseMentorId));
 
-
 module.exports = courseRouter;

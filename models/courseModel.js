@@ -20,13 +20,12 @@ const courseSchema = new mongoose.Schema({
   mentor: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: 'You must supply a mentor',
+    required: 'Mentor missing',
   },
-  mentoree: {
+  sessions: [{
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
-    required: 'You must supply a mentor',
-  },
+    ref: 'Session',
+  }],
 });
 
 courseSchema.index({
@@ -34,7 +33,7 @@ courseSchema.index({
   description: 'text',
 });
 
-courseSchema.pre('save', (next) => {
+courseSchema.pre('save', function(next) {
   if (!this.isModified('name')) {
     next();
     return;

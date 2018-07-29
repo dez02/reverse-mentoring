@@ -32,9 +32,10 @@ userRouter.get('/account', authController.isLoggedIn, userController.account); /
 userRouter.post('/account', catchErrors(userController.updateAccount));
 
 
-// getMentorForm
 // userRouter.get('/mentors', userController.getMentorCourse);
-userRouter.get('/mentor/form', userController.mentorForm); // form d'inscrip mentor en get
+
+// getMentorForm
+userRouter.get('/mentor/form', userController.mentorForm);
 
 userRouter.post('/mentor/form', catchErrors(userController.registerMentor));
 

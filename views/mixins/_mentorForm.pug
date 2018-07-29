@@ -22,9 +22,9 @@ mixin mentorForm()
         .form.col-md-8.form-group
           label(for="description") Description
           if user
-            textarea(name="description" class="form-control" rows="5" style="overflow-y: scroll")=user.description
+            textarea(name="description" class="form-control" rows="5")=user.description
           else
-            textarea(name="description" class="form-control" rows="5" style="overflow-y: scroll")
+            textarea(name="description" class="form-control" rows="5")
 
       button(type="submit" class="btn btn-secondary btn-lg ") Envoyer
 
