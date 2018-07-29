@@ -5,6 +5,9 @@
     "max-len": 0,
     "consistent-return": 0,
     "no-unused-vars": "off",
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "quote-props": "off",
+    "func-names": "off",
+    "no-console": "off"
   }
 }

@@ -4,7 +4,7 @@ const Session = mongoose.model('Session');
 const Course = mongoose.model('Course');
 
 exports.createSessionForm = (req, res) => {
-  res.render('sessionForm', { title: 'Sessions', 'idCours': req.params.idCours});
+  res.render('sessionForm', { title: 'Sessions', 'idCours': req.params.idCours });
 };
 
 exports.addSession = async (req, res) => {
@@ -12,7 +12,7 @@ exports.addSession = async (req, res) => {
     date: req.body.date,
   });
 
-  let course = await Course.findOneAndUpdate(
+  const course = await Course.findOneAndUpdate(
     { _id: req.params.idCours },
     { $push: { sessions: session } },
   );
