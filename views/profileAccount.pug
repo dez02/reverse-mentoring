@@ -5,16 +5,25 @@ block content
     .container(style="margin-top:200px")
       .row
         div.mt-5(class="card" style="width:27%")
-          div(class="card-body")
-            img.img-thumbnail(src="./public/images/jc.jpg")
-            a.nav-link.nav__link(href="#") Profil
           div(class="card" style="width:27%")
+          div(class="card-body")
+            a.nav-link.nav__link(href="#") Courses
           div(class="card-body")
             a.nav-link.nav__link(href="#") Mentorés
           div(class="card" style="width:27%")
           div(class="card-body")
             a.nav-link.nav__link(href="#") Rendez-vous
 
+  .inner
+    .courses
+      ul
+      each course in courses
+        li #{course.name}
+        ul
+        each session in course.sessions
+          li #{session.date}
+        a(style="color: blue" href=`/sessions/form/${course._id}`)
+          button Ajouter session
 
 
 

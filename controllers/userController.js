@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const promisify = require('es6-promisify');
 
+const Course = mongoose.model('Course');
 const User = mongoose.model('User');
 
 // RegisterForm
@@ -47,21 +48,6 @@ exports.validateRegister = (req, res, next) => {
   }
   next(); // continuer vers l'inscription dans la bdd
 };
-// getMentorCourse
-// exports.getMentorCourse = (req, res, next) => {
-//   const user = new User({
-//     name: req.body.name,
-//     email: req.body.email,
-//   });
-//   user.save(() => {
-//     const course = new Course({ date: new Date(), mentor: user._id });
-//     course.save(() => {
-//       user.course.push(course);
-//       user.save();
-//       console.log(user + "blablabla");
-//     });
-//   });
-// };
 
 // Register
 exports.register = async (req, res, next) => {
@@ -99,8 +85,10 @@ exports.registerMentor = async (req, res, next) => {
 };
 
 // ProfileAccount user
-exports.account = (req, res) => {
-  res.render('profileAccount', { title: 'Mon compte' });
+exports.account = async (req, res) => {
+  const courses = await Course.find({ mentor: req.user }).populate('sessions');
+  console.log(courses);
+  res.render('profileAccount', { title: 'Mon compte', courses });
 };
 
 
