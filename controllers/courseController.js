@@ -107,9 +107,3 @@ exports.searchCourses = async (req, res) => {
 
 // Get mentorCourse
 
-// exports.getCoursMentorId = async (req, res) => {
-//   course = await Course.find({ _idMentor = req.params.idMentor });
-//   res.render('courseMentor', { title: 'Mes Activités'});
-// };
-
-// pour comparer un ObjectId et une string on peut utiliser la méthode(equals)

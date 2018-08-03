@@ -3,21 +3,8 @@ extends layout
 include mixins/_courseCard
 
 block content
-  //- jumbotron pas mis de container pq je v q mon jum ocp tte la lg
-    // todo transformer button en lien
-
-
-  //- a(href="/user/inscription")
-    //- button.btn.btn-outline-success.btn-lg.float-right(type="button") Register
   .container-fluid.jumbotron
-    //- img.jumbotron(src="/images/reverse-mentoringjum.png" style="width:100%")
-    //- .container.text-sm-center
-    //-   h1.display-4 Reverse Mentoring
-    //-   p La plateforme pour accélérer le développement de vos talents
-  //- jumbotron
-
-
-  //- input search
+      //- input search
   .inner
     .col-md-6.mx-auto
       .nav__section.nav__section--search
@@ -26,18 +13,11 @@ block content
             input.form-control.search__input(type="search" placeholder="Rechercher une activité..." arial-label="Rechercher une activité" name="search")
             .input-group-append
             .search__results
-          //- button.btn.btn-outline-secondary(type="button") Go!
-
-  //- input search
-
   //- cards
   .inner
     .courses
       each course in courses
         +courseCard(course)
-
-
-  //- cards
 
   //- jumbotron footer
   .jumbotron.jumbotron-fluid.text-black.mt-5.mb-0

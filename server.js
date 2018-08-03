@@ -37,9 +37,9 @@ app.use(passport.session());
 
 app.use(flash());
 
-// variables locales
+// variables locales accessible dans mes vues
 app.use((req, res, next) => {
-  res.locals.flashes = req.flash();
+  res.locals.flashes = req.flash(); // res.locals: les props st valables uniqm pdt la durée de vie de la req
   res.locals.h = helpers;
   res.locals.user = req.user || null;
   res.locals.currentPath = req.path;
