@@ -6,7 +6,7 @@ const authController = require('../controllers/authController');
 const userRouter = express.Router();
 
 
-// GET userLogin
+// GET loginForm
 userRouter.get('/login', userController.loginForm); // formulaire de connexion en get on récup le form
 
 // POST userLogin
@@ -15,13 +15,13 @@ userRouter.post('/login', authController.login);
 // Logout
 userRouter.get('/logout', authController.logout);
 
-// GET Register
+// GET RegisterForm
 userRouter.get('/inscription', userController.registerForm); // form inscription
 
 // POST Register
 userRouter.post('/inscription',
   userController.validateRegister, // ici on valide d'abord le formulaire d'inscription
-  userController.register,
+  userController.userRegister,
   authController.login,
 );
 

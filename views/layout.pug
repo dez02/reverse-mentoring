@@ -8,36 +8,36 @@ html(lang="en")
   body
     block header
       header.top
-        ul.nav
-            li.nav-tem.nav__item
-              a.nav-link.nav__link.nav__link--logo(href="/")
-                != h.icon('logo_B')
-              p Accueil
+        nav.nav
+          .nav__section.nav__section--pages
+            each item in h.menu
+              li.nav__item
+                a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
+                  != h.icon(item.icon)
 
+          .nav__section.nav__section--user
             if user
-              ul.nav.justify-content-end
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
-                  != h.icon('boutonadd')
-                  span Ajouter
-                  //- span.heart-count #{user.hearts && user.hearts.length}
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/logout", class=(currentPath.startsWith('/user/logout') ? 'nav__link--active' : ''))
-                  != h.icon('logout')
-                  span Logout
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/account", class=(currentPath.startsWith('/user/account') ? 'nav__link--active' : ''))
-                  //- img.avatar(src=user.gravatar)
-                  p #{user.name}
+              li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
+                != h.icon('buttonadd')
+                span Ajouter
+                //- span.heart-count #{user.hearts && user.hearts.length}
+              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/logout", class=(currentPath.startsWith('/user/logout') ? 'nav__link--active' : ''))
+                != h.icon('logout')
+                span Logout
+              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/account", class=(currentPath.startsWith('/user/account') ? 'nav__link--active' : ''))
+                img.avatar(src=user.gravatar + 'd=retro')
+                //- p #{user.name}
 
             else
-              ul.nav.justify-content-end
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : '')) Devenir Mentor
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) S'inscrire
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) S'identifier
+              //- li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : '')) Devenir Mentor
+              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) S'inscrire
+              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) S'identifier
 
     block messages
       if locals.flashes
-        .inner
+        .inner.inner--flashes
           .flash-messages
-            -const categories = Object.keys(locals.flashes)
+            - const categories = Object.keys(locals.flashes)
               each category in categories
                 each message in flashes[category]
                   .flash(class=`flash--${category}`)

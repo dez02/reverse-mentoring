@@ -6,12 +6,12 @@ const User = mongoose.model('User');
 
 // RegisterForm
 exports.registerForm = (req, res) => {
-  res.render('register', { title: 'S\'inscrire' });
+  res.render('registerForm', { title: 'S\'inscrire' });
 };
 
 // LoginForm
 exports.loginForm = (req, res) => {
-  res.render('login', { title: 'Se Connecter' });
+  res.render('loginForm', { title: 'Se Connecter' });
 };
 
 // MentorForm
@@ -50,11 +50,12 @@ exports.validateRegister = (req, res, next) => {
 };
 
 // Register
-exports.register = async (req, res, next) => {
+exports.userRegister = async (req, res, next) => {
   const user = new User({ email: req.body.email, name: req.body.name });
   const register = promisify(User.register, User); // on enregistre ds la bdd
   await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
   // la méthode register que nous transformons en promesse
+  console.log(user);
   next();
 };
 
@@ -76,7 +77,7 @@ exports.registerMentor = async (req, res, next) => {
       isMentor: true,
     });
 
-    const register = promisify(User.register, User); // on enregistre ds la bdd
+    const register = promisify(User.register, User); // on enregistre le user ds la bdd
     await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
     // la méthode register que nous transformons en promesse
   }
@@ -87,7 +88,6 @@ exports.registerMentor = async (req, res, next) => {
 // ProfileAccount user
 exports.account = async (req, res) => {
   const courses = await Course.find({ mentor: req.user }).populate('sessions');
-  console.log(courses);
   res.render('profileAccount', { title: 'Mon compte', courses });
 };
 
@@ -108,3 +108,4 @@ exports.updateAccount = async (req, res) => {
   req.flash('success', 'Votre profil a bien été mis á jour');
   res.redirect('profileAccount');
 };
+

@@ -5,7 +5,7 @@ mixin registerForm()
         .registerform
           h2.text-center.mt-5 S'inscrire
           form.mx-auto(action="/user/inscription" method="POST")
-            img.form-img.rounded-circle(src="/images/reverse-mentoring.png")
+            img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
             .form-group
               label(for="name") Nom
               input.form-control(type="text" name="name" aria-describedby="name" placeholder="Enter your name")
@@ -19,6 +19,6 @@ mixin registerForm()
               label(for="password-confirm" name="password-confirm") Confirmation du mot de passe
               input.form-control(type="password" name="password-confirm")
             .form-group
-              input.btn.btn-secondary.btn-lg(type="submit" value="S'inscrire")
+              input.btn.btn-secondary.btn-lg.btn-block(type="submit" value="S'inscrire")
 
 

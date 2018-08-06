@@ -38,18 +38,20 @@ exports.resize = async (req, res, next) => {
   next();
 };
 
-// GET la liste des cours j'interroge ma base pour afficher tous les cours
+// GET LISTE COURS j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
   const courses = await Course.find();
+  // console.log(courses);
   res.render('courses', { courses });
 };
 
-// Ajouter un cours
+
+// ADD A COURSE
 exports.addCourse = (req, res) => {
   res.render('courseAdd', { title: 'Ajouter Une Activité' });
 };
 
-// Poster un cours (POST) Créer
+// POSTER UN COURS (POST) Créer
 exports.createCourse = async (req, res) => {
   req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
   // le mentor est bien le mm q celui du user
@@ -65,7 +67,7 @@ const confirmOwner = (course, user) => {
   }
 };
 
-// Editer un cours(GET)
+// EDITER UN COURS(GET)
 exports.editCourse = async (req, res) => {
   const course = await Course.findOne({ _id: req.params.id });
   confirmOwner(course, req.user);

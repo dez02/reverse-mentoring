@@ -18,4 +18,4 @@ mixin courseForm(course = {})
           img(src=`/uploads/${course.photo}`, alt=course.name with=200)
         //- if  user && course.mentor.equals(user._id)
     form-group
-      button.btn.btn-primary(type="submit") Enregistrer
+      input.btn.btn-secondary.btn-lg.btn-block(type="submit" value="Enregistrer")

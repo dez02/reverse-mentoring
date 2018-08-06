@@ -1,32 +1,39 @@
 mixin mentorForm()
   .container.mt-5
-    h2.text-center #{title}
-    form(action="/user/mentor/form" method="post")
-      .row.mt-5
-        .form-group.col-md-4
-          //- img.img-thumbnail(src=`/images/${user.image}`)
-        .form.col-md-8
+    .row
+      .mx-auto.col-md-8.col-md-offset-2
+        .mentorform
+          h2.text-center #{title}
+          form.mx-auto(action="/user/mentor/form" method="post")
+            .row.mt-5
+              .mx-auto.col-md-8.col-md-offset-2
+                .form-group
+                  //- img.img-thumbnail(src=`/images/${user.image}`)
           if user
             .form-group
-              input.form-control.form-control-lg(type="text" name="name" disabled="disabled" value=user.name)
+              input.form-control.form-control(type="text" name="name" disabled="disabled" value=user.name)
             .form-group
-              input.form-control.form-control-lg(type="email" name="email" disabled="disabled" value=user.email)
+              input.form-control.form-control(type="email" name="email" disabled="disabled" value=user.email)
+            .form-group
+              label(for="description") Description
+              textarea(name="description" class="form-control" rows="5")=user.description
           else
             .form-group
-              input.form-control.form-control-lg(type="text" name="name" placeholder="Name")
+              label(for="name") Nom
+              input.form-control.form-control(type="text" name="name" placeholder="Name")
             .form-group
-              input.form-control.form-control-lg(type="password" name="password" placeholder="Password")
+              label(for="email") Adresse mail
+              input.form-control.form-control(type="email" name="email" placeholder="Email")
             .form-group
-              input.form-control.form-control-lg(type="email" name="email" placeholder="Email")
-      .row.mt-5
-        .form.col-md-8.form-group
-          label(for="description") Description
-          if user
-            textarea(name="description" class="form-control" rows="5")=user.description
-          else
-            textarea(name="description" class="form-control" rows="5")
+              label(for="password") Mot de passe
+              input.form-control.form-control(type="password" name="password" placeholder="Password")
+            .form-group
+              label(for="description") Description
+              textarea(name="description" class="form-control" rows="5")
+            .form-group
+              input(type="submit" class="btn btn-secondary btn-lg btn-block" value="Envoyer")
+        //- button(type="submit" class="btn btn-secondary btn-lg btn-block") Ajouter une session
 
-      button(type="submit" class="btn btn-secondary btn-lg ") Envoyer
 
 
 

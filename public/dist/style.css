@@ -7,7 +7,7 @@ body {
   body:before {
     content: '';
     display: block;
-    background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%);
+    /* background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); */
     height: 10px;
     width: 100%; }
 
@@ -95,7 +95,7 @@ form {
     width: 100%; }
   .course__details {
     padding: 2rem;
-    background-color: beige; }
+    background-color: #ffffff; }
     .course__details p {
       line-height: 1.2;
       margin-bottom: 0; }
@@ -124,7 +124,7 @@ form {
   font-size: 10px; }
   .course__action svg {
     width: 25px;
-    fill: white; }
+    fill: green; }
   .course__action--edit a {
     border-bottom: 0; }
 
@@ -143,7 +143,7 @@ form {
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
-  .course__hero img {
+  .course__hero .course-img {
     height: 100%;
     width: 100%;
     top: 0;
@@ -683,23 +683,21 @@ a {
   .nav__section {
     display: -ms-flexbox;
     display: flex; }
-    .nav__section--search {
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto; }
   .nav__item {
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    width:100px; }
   .nav__link {
     background: #303030;
     color: white;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     text-transform: uppercase;
-    padding: 1.2rem 2rem 1rem 2rem;
+    /* padding: 1.2rem 2rem 1rem 2rem; */
     display: block;
     display: -ms-flexbox;
     display: flex;
-    /* -ms-flex-direction: column;
-        flex-direction: column; */
+    -ms-flex-direction: column;
+        flex-direction: column;
     -ms-flex-align: center;
         align-items: center;
     -ms-flex-pack: center;
@@ -710,11 +708,12 @@ a {
       width: 40px;
       transition: all 0.2s;
       fill: white;
+      margin-bottom: 1rem;
        }
     .nav__link:hover, .nav__link--active {
       border-bottom-color: rgba(0, 0, 0, 0.2);
       border-right-color: rgba(0, 0, 0, 0.05);
-      background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%) fixed; }
+      background: #FFC40E; }
       .nav__link:hover svg, .nav__link--active svg {
         -ms-transform: scale(1.2);
             transform: scale(1.2); }
@@ -730,9 +729,9 @@ a {
     padding-left: 1rem;
     padding-right: 1rem; }
     .nav__link svg {
-      width: 30px; }
+      width: 30%; }
     .nav__link--logo svg {
-      width: 100px; } }
+      width: 100%; } }
 
 @media all and (max-width: 900px) {
   .nav {
@@ -778,7 +777,7 @@ a {
   }
 
   .container-fluid.jumbotron{
-    background-image: url("/images/reverse-mentoringjum.png");
+    background-image: url("/images/photos/reverse-mentoringjum.png");
     /* background-repeat: no-repeat; */
     width: 100%;
     height: 250px;

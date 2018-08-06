@@ -3,15 +3,15 @@ mixin courseCard(course = {})
   .course
     .course__hero
       .course__actions
-        a(href=`/courses/edit/${course._id}`)
-          img(src=`/uploads/${course.photo || 'code.jpg'}`)
+        a.course-img(href=`/courses/edit/${course._id}`)
+          img.course-img(src=`/uploads/${course.photo || 'code.jpg'}`)
       h2.title
         a(href=`/courses/${course.slug}`) #{course.name}
     .course__details
       p= course.description
-    if user && course.mentor.equals(user._id)
-      .course__action.course__action--edit
-        a(href=`/courses/edit/${course._id}`)
-          button Editer
+      if user && course.mentor.equals(user._id)
+        .course__action.course__action--edit
+          a(href=`/courses/edit/${course._id}`)
+            != h.icon('pencil')
 
 
