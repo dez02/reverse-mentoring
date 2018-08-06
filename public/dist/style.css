@@ -671,7 +671,7 @@ a {
   text-align: center; }
 
 .nav {
-  height: 80px;
+  height: 60px;
   display: -ms-flexbox;
   display: flex;
   list-style: none;
@@ -784,6 +784,16 @@ a {
     background-size: cover;
     padding: 0;
   }
+/* MENTORFORM*/
+
+h2.mentor-form {
+  border-radius: 40px;
+}
+
+/* NEW ACTIVITY FORM*/
+.img-newCourse {
+  padding-top: 60px;
+}
 
 
 

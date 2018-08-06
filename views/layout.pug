@@ -14,7 +14,6 @@ html(lang="en")
               li.nav__item
                 a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
                   != h.icon(item.icon)
-
           .nav__section.nav__section--user
             if user
               li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
@@ -27,7 +26,6 @@ html(lang="en")
               li.nav-item.nav__item: a.nav-link.nav__link(href="/user/account", class=(currentPath.startsWith('/user/account') ? 'nav__link--active' : ''))
                 img.avatar(src=user.gravatar + 'd=retro')
                 //- p #{user.name}
-
             else
               //- li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : '')) Devenir Mentor
               li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) S'inscrire

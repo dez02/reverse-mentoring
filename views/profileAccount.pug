@@ -1,28 +1,30 @@
 extends layout
 
 block content
-  .inner
-    .container(style="margin-top:200px")
-      .row
-        div.mt-5(class="card" style="width:27%")
-          div(class="card" style="width:27%")
-          div(class="card-body")
-            a.nav-link.nav__link(href=`/sessions/form/${idCours}`) Courses
-            .courses-mentor
-              ul
-                each course in courses
-                  li #{course.name}
-          div(class="card-body")
-            a.nav-link.nav__link(href="#") Mentorés
-          div(class="card" style="width:27%")
-          div(class="card-body")
-            a.nav-link.nav__link(href="#") Rendez-vous
+  .container
+    .row
+      .col
+        img.i
+      div.mt-5(class="card" style="width:27%")
+        div(class="card" style="width:27%")
+        div(class="card-body")
+          a.nav-link.nav__link(href=`/sessions/form/${idCours}`) Courses
+          .courses-mentor
+            ul
+              each course in courses
+                li.nav-item.nav__item #{course.name}
+                ul
+                each session in course.sessions
+                  li.nav-item.nav__item #{session.created}
+                    a.session(style="color: blue" href=`/sessions/form/${course._id}`)
+                      button Ajouter session
+        div(class="card-body")
+          a.nav-link.nav__link(href="#") Mentorés
+        div(class="card" style="width:27%")
+        div(class="card-body")
+          a.nav-link.nav__link(href="#") Rendez-vous
 
-        //- ul
-        //- each session in course.sessions
-        //-   li #{session.date}
-        //- a(style="color: blue" href=`/sessions/form/${course._id}`)
-        //-   button Ajouter session
+
 
 
 

@@ -48,7 +48,7 @@ exports.getCourses = async (req, res) => {
 
 // ADD A COURSE
 exports.addCourse = (req, res) => {
-  res.render('courseAdd', { title: 'Ajouter Une Activité' });
+  res.render('addnewcourse', { title: 'Ajouter Une Activité' });
 };
 
 // POSTER UN COURS (POST) Créer

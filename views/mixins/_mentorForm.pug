@@ -1,37 +1,33 @@
 mixin mentorForm()
   .container.mt-5
     .row
-      .mx-auto.col-md-8.col-md-offset-2
-        .mentorform
-          h2.text-center #{title}
-          form.mx-auto(action="/user/mentor/form" method="post")
-            .row.mt-5
-              .mx-auto.col-md-8.col-md-offset-2
-                .form-group
-                  //- img.img-thumbnail(src=`/images/${user.image}`)
-          if user
-            .form-group
-              input.form-control.form-control(type="text" name="name" disabled="disabled" value=user.name)
-            .form-group
-              input.form-control.form-control(type="email" name="email" disabled="disabled" value=user.email)
-            .form-group
-              label(for="description") Description
-              textarea(name="description" class="form-control" rows="5")=user.description
-          else
-            .form-group
-              label(for="name") Nom
-              input.form-control.form-control(type="text" name="name" placeholder="Name")
-            .form-group
-              label(for="email") Adresse mail
-              input.form-control.form-control(type="email" name="email" placeholder="Email")
-            .form-group
-              label(for="password") Mot de passe
-              input.form-control.form-control(type="password" name="password" placeholder="Password")
-            .form-group
-              label(for="description") Description
-              textarea(name="description" class="form-control" rows="5")
-            .form-group
-              input(type="submit" class="btn btn-secondary btn-lg btn-block" value="Envoyer")
+      .col-md-8.mx-auto
+        h2.mentor-form.text-center.bg-warning.text-white #{title}
+    .row
+      form.col-md-8.mx-auto(action="/user/mentor/form" method="post")
+        if user
+          .form-group
+            input.form-control.form-control(type="text" name="name" disabled="disabled" value=user.name)
+          .form-group
+            input.form-control.form-control(type="email" name="email" disabled="disabled" value=user.email)
+          .form-group
+            label(for="description") Description
+            textarea(name="description" class="form-control" rows="5")=user.description
+          input.text-white(type="submit" class="btn btn-warning btn-lg btn-block" value="Envoyer")
+        else
+          .form-group
+            label(for="name") Nom
+            input.form-control.form-control(type="text" name="name" placeholder="Name")
+          .form-group
+            label(for="email") Adresse mail
+            input.form-control.form-control(type="email" name="email" placeholder="Email")
+          .form-group
+            label(for="password") Mot de passe
+            input.form-control.form-control(type="password" name="password" placeholder="Password")
+          .form-group
+            label(for="description") Description
+            textarea(name="description" class="form-control" rows="5")
+          input(type="submit" class="btn btn-warning btn-lg btn-block" value="POSTULER POUR DEVENIR MENTOR")
         //- button(type="submit" class="btn btn-secondary btn-lg btn-block") Ajouter une session
 
 
