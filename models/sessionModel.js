@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const sessionSchema = new mongoose.Schema({
-  created: {
+  date: {
     type: Date,
     default: Date.now,
   },

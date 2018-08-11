@@ -1,6 +1,8 @@
 mixin sessionForm(session = {})
-  form.mx-auto.my-5(action=`/sessions/form/${idCours}` method="POST")
-    .form-group
-      input.form-control(type="date" name="date" aria-describedby="date" placeholder="Date")
-    input.btn.btn-secondary.btn-lg.btn-block.mt-5(type="submit" value="Submit")
+  container
+    h2.session-form.text-center.mt-5 #{title} 
+    form.mx-auto.my-5(action=`/sessions/form/${idCours}` method="POST")
+      .form-group
+        input.form-control(type="date" name="date" aria-describedby="date" placeholder="Date")
+      input.btn.btn-secondary.btn-lg.btn-block.mt-5(type="submit" value="Submit")
 

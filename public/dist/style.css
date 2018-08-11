@@ -3,7 +3,7 @@ html {
   font-size: 10px; }
 
 body {
-  background: #ffffff; }
+  background: #f3f3f3; }
   body:before {
     content: '';
     display: block;
@@ -18,8 +18,7 @@ body {
     .inner {
       padding: 2rem; } }
 
-/* .img-thumbnail {
-  height: 150px; } */
+
 
 .jumbotron {
   background-color: #f8bc32; }
@@ -32,6 +31,8 @@ input, textarea {
     border-color: red; }
 
 label {
+  padding: 0;
+  margin-bottom: 0;
   font-size: 1.5rem;
   letter-spacing: 0px;
   /* padding: 5px 0; */
@@ -793,6 +794,19 @@ h2.mentor-form {
 /* NEW ACTIVITY FORM*/
 .img-newCourse {
   padding-top: 60px;
+}
+.img-mentor {
+  width: 140px;
+}
+
+.user-info {
+  font-size: 35px;
+  margin-top: 2px;
+  color: #ffffff;
+}
+
+ul.user-profil {
+  display: flex;
 }
 
 

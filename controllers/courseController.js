@@ -41,8 +41,9 @@ exports.resize = async (req, res, next) => {
 // GET LISTE COURS j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
   const courses = await Course.find();
-  // console.log(courses);
   res.render('courses', { courses });
+  // console.log(courses);
+  // res.json(courses);
 };
 
 
@@ -55,7 +56,7 @@ exports.addCourse = (req, res) => {
 exports.createCourse = async (req, res) => {
   req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
   // le mentor est bien le mm q celui du user
-  const course = await (new Course(req.body)).save(); // course avec c minuscule représente mon entité
+  const course = await (new Course(req.body)).save(); // Création d'une instance de Model
   req.flash('success', `Successfully Created ${course.name}`);
   res.redirect('/courses');
 };
@@ -63,6 +64,7 @@ exports.createCourse = async (req, res) => {
 // function qui va me permettre une fois mon cours trouvé de confirmer que le mentor est bien celui de mon cours
 const confirmOwner = (course, user) => {
   if (!course.mentor.equals(user._id)) {
+
     throw Error('You must own a course in order to edit it!');
   }
 };
@@ -91,21 +93,18 @@ exports.updateCourse = async (req, res) => {
 
 // Find the course given the slug
 exports.getCourseBySlug = async (req, res, next) => {
-  const course = await Course.findOne({ slug: req.params.slug }).populate('mentor');
+  const course = await Course.findOne({ slug: req.params.slug }).populate('mentor').populate('sessions');
+  // res.json(course.mentor);
   if (!course) return next(); // middleware next me permet de passer à la suite et
-  // d'afficher un 404 si jms mon cours n'existe pas
-  res.render('course', { course, title: course.name });
+  //  d'afficher un 404 si jms mon cours n'existe pas
+  res.render('course', { course, title: course.name }); // course.mentor.name
+  // res.json(course);
 };
 
 // find a course in the search input
 exports.searchCourses = async (req, res) => {
-  const courses = await Course.find({
-    $text: {
-      $search: req.query.q,
-    },
-  });
+  const courses = await Course.find();
   res.json(courses);
 };
 
 // Get mentorCourse
-

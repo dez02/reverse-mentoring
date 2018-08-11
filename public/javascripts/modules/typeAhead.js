@@ -18,8 +18,8 @@ function typeAhead(search) {
 
   // console.log(searchInput, searchResults);
 
-  searchInput.on('input', function() {
-    // console.log(this.value);
+  searchInput.on('input', function () {
+    console.log(this.value);
 
     if (!this.value) {
       searchResults.style.display = 'none';

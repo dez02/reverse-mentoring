@@ -3,9 +3,9 @@ mixin registerForm()
     .row.pb-5
       .mx-auto.col-md-8.col-md-offset-2
         .registerform
-          h2.text-center.mt-5 S'inscrire
+          h2.text-center.text-white.mt-5 S'inscrire
           form.mx-auto(action="/user/inscription" method="POST")
-            img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
+            //- img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
             .form-group
               label(for="name") Nom
               input.form-control(type="text" name="name" aria-describedby="name" placeholder="Enter your name")
@@ -22,7 +22,3 @@ mixin registerForm()
               input.btn.btn-secondary.btn-lg.btn-block(type="submit" value="S'inscrire")
 
 
-//- .row
-//-               .mx-auto.col-md-8.col-md-offset-2
-//-                 //- .form-group
-//-                   //- img.img-thumbnail(src=`/images/${user.image}`)

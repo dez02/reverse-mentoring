@@ -6,6 +6,8 @@
 
 import { $, $$ } from './modules/bling';
 import typeAhead from './modules/typeAhead';
-
+import sessionUpdate from './modules/session';
 
 typeAhead($('.search'));
+
+sessionUpdate($('.course-session'));

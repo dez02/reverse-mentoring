@@ -24,15 +24,15 @@ const userSchema = new Schema({
     trim: true,
     required: "Veuillez rentrer un nom s'il vous plaît",
   },
+  description: {
+    type: String,
+  },
   image: {
     type: String,
   },
   isMentor: {
     type: Boolean,
     default: false,
-  },
-  description: {
-    type: String,
   },
 });
 

@@ -3,26 +3,74 @@ extends layout
 block content
   .container
     .row
-      .col
-        img.i
-      div.mt-5(class="card" style="width:27%")
-        div(class="card" style="width:27%")
-        div(class="card-body")
-          a.nav-link.nav__link(href=`/sessions/form/${idCours}`) Courses
-          .courses-mentor
+      .col.md-8.bg-warning.text-center
+        img.img-mentor.rounded-circle.mt-5(src="/images/photos/sourire.png")
+        .col
+          .info-block.text-editor
+            .user-info #{user.name}
+              .course__action.course__action--edit
+                != h.icon('pencil')
+        .col
+          .info-block-about
+            p.text-light Décrivez-vous en quelques mots
+
+    .list-course
+      h1.text-center.activities Activités
+      ul.user-profil
+        each course in courses
+          .row
+            li.nav-item.nav__item #{course.name}
             ul
-              each course in courses
-                li.nav-item.nav__item #{course.name}
-                ul
-                each session in course.sessions
-                  li.nav-item.nav__item #{session.created}
-                    a.session(style="color: blue" href=`/sessions/form/${course._id}`)
-                      button Ajouter session
-        div(class="card-body")
-          a.nav-link.nav__link(href="#") Mentorés
-        div(class="card" style="width:27%")
-        div(class="card-body")
-          a.nav-link.nav__link(href="#") Rendez-vous
+              each session in course.sessions
+                li.nav-item.nav__item #{session.date}
+            a.session(style="color: blue" href=`/sessions/form/${course._id}`)
+              button Ajouter session
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //- .card-account.mt-5(style="width:27%")
+      //-   div(class="card" style="width:27%")
+      //-   div(class="card-body")
+      //-     a.nav-link.nav__link(href=`/sessions/form/${idCours}`) Courses
+      //-     .courses-mentor
+      //-       ul
+      //-         each course in courses
+      //-           li.nav-item.nav__item #{course.name}
+      //-           ul
+      //-           each session in course.sessions
+      //-             li.nav-item.nav__item #{session.date}
+      //-               a.session(style="color: blue" href=`/sessions/form/${course._id}`)
+      //-                 button Ajouter session
+
+
+
+
+
+
+
+
+
+
+      //-   div(class="card-body")
+      //-     a.nav-link.nav__link(href="#") Mentorés
+      //-   div(class="card" style="width:27%")
+      //-   div(class="card-body")
+      //-     a.nav-link.nav__link(href="#") Rendez-vous
 
 
 

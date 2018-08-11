@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 
-const courseSchema = new mongoose.Schema({
+const courseSchema = new mongoose.Schema({ // Création du Schema
   name: {
     type: String,
     trim: true,
@@ -14,7 +14,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  date: Date,
+  date: { type: Date, default: Date.now },
   photo: String,
   domaine: String,
   mentor: {
@@ -42,4 +42,4 @@ courseSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('Course', courseSchema);
+module.exports = mongoose.model('Course', courseSchema); // Création du model qui va me permettre d'insérer des données dans mdb en respectant le schema
