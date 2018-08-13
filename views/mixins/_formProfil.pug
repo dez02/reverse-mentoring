@@ -1,0 +1,23 @@
+mixin formProfil()
+  container
+    .row
+      .col-md-8.mx-auto.text-center
+        h2= title
+    .row.col-md-6.mx-auto
+      form(action="/user/account" method="post" enctype="multipart/form-data")
+        form-group
+          label(for="name") Name
+          input.form-control(type="text" name="name" placeholder="Enter your name" value=user.name)
+        form-group
+          label(for="description") Description
+          textarea.form-control(name="description" rows="3")= user.description
+        //-upload Image
+        form-group
+          label(for="photo") Photo
+            input.form-control-file(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+            if user.photo
+              img(src=`/uploads/${user.photo}`, alt=user.name with=200)
+        form-group
+          input.btn.btn-warning.btn-lg.btn-block.text-white.mt-5(type="submit" value="Enregistrer")
+
+

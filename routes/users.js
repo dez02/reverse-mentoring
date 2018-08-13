@@ -27,16 +27,23 @@ userRouter.post('/inscription',
 
 // GET UserAccount
 userRouter.get('/account', authController.isLoggedIn, userController.account); // on vérifie bien q le user est connecté
+userRouter.get('/account/:id', userController.accountAnotherOne); // on vérifie bien q le user est connecté
 
 // POST userAccount
-userRouter.post('/account', catchErrors(userController.updateAccount));
+userRouter.post('/account',
+  userController.upload,
+  catchErrors(userController.resize),
+  catchErrors(userController.updateAccount));
 
-
-// userRouter.get('/mentors', userController.getMentorCourse);
+// Edit userAccount
+userRouter.get('/edit/:id', catchErrors(userController.editProfil));
 
 // getMentorForm
 userRouter.get('/mentor/form', authController.isLoggedIn, userController.mentorForm);
 
-userRouter.post('/mentor/form', catchErrors(userController.registerMentor));
+userRouter.post('/mentor/form',
+  userController.upload,
+  catchErrors(userController.resize),
+  catchErrors(userController.registerMentor));
 
 module.exports = userRouter;

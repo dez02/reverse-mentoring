@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col.md-8.bg-warning.text-center
+        img.img-mentor.rounded-circle.mt-5(src=`${mentor.gravatar}`)
+        .col
+          .info-block.text-editor
+            .user-info #{mentor.name}
+        .col
+          .info-block-about
+            if mentor.description
+              p.text-light #{mentor.description}
+            else
+              p.text-light Décrivez-vous en quelques mots
+
+    .list-course
+      h1.text-center.activities Activités
+      ul.user-profil
+        each course in courses
+          .row
+            li.nav-item.nav__item #{course.name}
+            ul
+              each session in course.sessions
+                li.nav-item.nav__item #{session.date}

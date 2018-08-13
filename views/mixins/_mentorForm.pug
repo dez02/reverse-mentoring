@@ -4,7 +4,7 @@ mixin mentorForm()
       .col-md-8.mx-auto
         h2.mentor-form.text-center.bg-warning.text-white #{title}
     .row
-      form.col-md-8.mx-auto(action="/user/mentor/form" method="post")
+      form.col-md-8.mx-auto(action="/user/mentor/form" method="post" enctype="multipart/form-data")
         if user
           .form-group
             input.form-control.form-control(type="text" name="name" disabled="disabled" value=user.name)

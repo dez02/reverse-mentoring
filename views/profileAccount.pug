@@ -4,15 +4,19 @@ block content
   .container
     .row
       .col.md-8.bg-warning.text-center
-        img.img-mentor.rounded-circle.mt-5(src="/images/photos/sourire.png")
+        img.img-mentor.rounded-circle.mt-5(src=`${user.gravatar}`)
         .col
           .info-block.text-editor
             .user-info #{user.name}
               .course__action.course__action--edit
-                != h.icon('pencil')
+                a(href=`/user/edit/${user._id}`)
+                  != h.icon('pencil')
         .col
           .info-block-about
-            p.text-light Décrivez-vous en quelques mots
+            if user.description
+              p.text-light #{user.description}
+            else
+              p.text-light Décrivez-vous en quelques mots
 
     .list-course
       h1.text-center.activities Activités

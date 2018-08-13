@@ -33,6 +33,7 @@ exports.supplySession = async (req, res) => {
   ).exec();
 
   // todo flash pour dire ton inscription est pris en compte
+  req.flash('success', 'Successfully Added');
   res.json();
 };
 
@@ -47,4 +48,5 @@ exports.cancelSession = async (req, res) => {
 };
 
 
-// // NE PEUT AJOUTER QUE LE MENTOR
+// description je deviens mentor?
+// photo mentor?

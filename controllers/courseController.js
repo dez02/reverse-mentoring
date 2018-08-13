@@ -64,7 +64,6 @@ exports.createCourse = async (req, res) => {
 // function qui va me permettre une fois mon cours trouvé de confirmer que le mentor est bien celui de mon cours
 const confirmOwner = (course, user) => {
   if (!course.mentor.equals(user._id)) {
-
     throw Error('You must own a course in order to edit it!');
   }
 };

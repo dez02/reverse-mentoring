@@ -27,7 +27,7 @@ const userSchema = new Schema({
   description: {
     type: String,
   },
-  image: {
+  photo: {
     type: String,
   },
   isMentor: {

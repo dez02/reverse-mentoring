@@ -16,9 +16,15 @@ html(lang="en")
                   != h.icon(item.icon)
           .nav__section.nav__section--user
             if user
-              li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
-                != h.icon('buttonadd')
-                span Ajouter
+              if user.isMentor
+                li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
+                  != h.icon('buttonadd')
+                  span Ajouter
+              else
+                if user.isMentor
+                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : ''))
+                  != h.icon('buttonadd')
+                  span Devenir Mentor
                 //- span.heart-count #{user.hearts && user.hearts.length}
               li.nav-item.nav__item: a.nav-link.nav__link(href="/user/logout", class=(currentPath.startsWith('/user/logout') ? 'nav__link--active' : ''))
                 != h.icon('logout')
