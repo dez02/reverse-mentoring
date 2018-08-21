@@ -1,24 +1,22 @@
 mixin registerForm()
   .container
-    .row.pb-5
-      .mx-auto.col-md-8.col-md-offset-2
-        .registerform
-          h2.text-center.text-white.mt-5 S'inscrire
-          form.mx-auto(action="/user/inscription" method="POST")
-            //- img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
-            .form-group
-              label(for="name") Nom
-              input.form-control(type="text" name="name" aria-describedby="name" placeholder="Enter your name")
-            .form-group
-              label(for="email") Adresse mail
-              input.form-control(type="email" name="email" aria-describedby="email" placeholder="Enter your email")
-            .form-group
-              label(for="password") Mot de passe
-              input.form-control(type="password" name="password" placeholder="password")
-            .form-group
-              label(for="password-confirm" name="password-confirm") Confirmation du mot de passe
-              input.form-control(type="password" name="password-confirm")
-            .form-group
-              input.btn.btn-secondary.btn-lg.btn-block(type="submit" value="S'inscrire")
+    .row.mt-5
+      .mx-auto.col-md-8.bg-warning.pb-5.mt-5
+        form.mx-auto.mt-5(action="/user/inscription" method="POST")
+          img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
+          .form-group
+            label(for="name") Nom
+            input.form-control(type="text" name="name" aria-describedby="name" placeholder="Enter your name")
+          .form-group
+            label(for="email") Adresse mail
+            input.form-control(type="email" name="email" aria-describedby="email" placeholder="Enter your email")
+          .form-group
+            label(for="password") Mot de passe
+            input.form-control(type="password" name="password" placeholder="password")
+          .form-group
+            label(for="password-confirm" name="password-confirm") Confirmation du mot de passe
+            input.form-control(type="password" name="password-confirm")
+          .form-group
+            input.btn.btn-warning.btn-lg.btn-block.mt-5(type="submit" value="S'inscrire")
 
 

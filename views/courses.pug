@@ -1,23 +1,26 @@
 extends layout
 
 include mixins/_courseCard
+include mixins/_pagination
 
 block content
   .container-fluid.jumbotron
-      //- input search
+    p #{title}
   .container
-    .col-md-6.mx-auto
-      .nav__section.nav__section--search
-        .input-group.mb-3
-          .search
-            input.form-control.search__input(type="search" placeholder="Rechercher une activité..." arial-label="Rechercher une activité" name="search")
-            .input-group-append
-            .search__results
+    .row
+      .col-md-6.mx-auto
+        .nav__section.nav__section--search
+          .input-group.mb-3
+            .search
+              input.form-control.search__input(type="search" placeholder="Rechercher une activité..." arial-label="Rechercher une activité" name="search")
+              .input-group-append
+              .search__results
     //- cards
   .container
     .courses
       each course in courses
         +courseCard(course)
+    +pagination(page, pages, count)
 
   //- jumbotron footer
   .jumbotron.jumbotron-fluid.text-black.mt-5.mb-0
@@ -31,4 +34,3 @@ block content
 
 
 
-    

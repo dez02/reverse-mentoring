@@ -1,5 +1,5 @@
 extends layout
-
+//- include mixins/_courseCard
 block content
   .container
     .row
@@ -17,64 +17,23 @@ block content
               p.text-light #{user.description}
             else
               p.text-light Décrivez-vous en quelques mots
-
-    .list-course
-      h1.text-center.activities Activités
-      ul.user-profil
-        each course in courses
-          .row
-            li.nav-item.nav__item #{course.name}
+    .row.bg-white
+      h1.activities.mx-auto Activités proposées
+    .row.bg-white
+      each course in courses
+        .course
+          .course__hero
+            .course__actions
+              a.course-img(href=`/courses/edit/${course._id}`)
+                img.course-img(src=`/uploads/${course.photo || 'code.jpg'}`)
+            h2.title
+              a(href=`/courses/${course.slug}`) #{course.name}
+          .course__details
             ul
               each session in course.sessions
-                li.nav-item.nav__item #{session.date}
+                li #{session.date}
             a.session(style="color: blue" href=`/sessions/form/${course._id}`)
-              button Ajouter session
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      //- .card-account.mt-5(style="width:27%")
-      //-   div(class="card" style="width:27%")
-      //-   div(class="card-body")
-      //-     a.nav-link.nav__link(href=`/sessions/form/${idCours}`) Courses
-      //-     .courses-mentor
-      //-       ul
-      //-         each course in courses
-      //-           li.nav-item.nav__item #{course.name}
-      //-           ul
-      //-           each session in course.sessions
-      //-             li.nav-item.nav__item #{session.date}
-      //-               a.session(style="color: blue" href=`/sessions/form/${course._id}`)
-      //-                 button Ajouter session
-
-
-
-
-
-
-
-
-
-
-      //-   div(class="card-body")
-      //-     a.nav-link.nav__link(href="#") Mentorés
-      //-   div(class="card" style="width:27%")
-      //-   div(class="card-body")
-      //-     a.nav-link.nav__link(href="#") Rendez-vous
+              button.addsession Ajouter une session
 
 
 
@@ -102,18 +61,6 @@ block content
 
 
 
-
-
-
-      //- ul.nav-profil.flex-column
-      //-   li.nav-item
-      //-     a.nav-link.active(href="#") Active
-      //-   li.nav-item
-      //-     a.nav-link(href="#") Link
-      //-   li.nav-item
-      //-     a.nav-link(href="#") Link
-      //-   li.nav-item
-      //-     a.nav-link.disabled(href="#") Disabled
 
 
 

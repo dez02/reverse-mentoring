@@ -8,7 +8,9 @@ mixin courseCard(course = {})
       h2.title
         a(href=`/courses/${course.slug}`) #{course.name}
     .course__details
-      p= course.description
+      a.slogan(href=`/courses/${course.slug}`)
+        p.slogan= course.slogan
+
       if user && course.mentor.equals(user._id)
         .course__action.course__action--edit
           a(href=`/courses/edit/${course._id}`)

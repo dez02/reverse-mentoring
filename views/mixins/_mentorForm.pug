@@ -1,10 +1,10 @@
 mixin mentorForm()
   .container.mt-5
     .row
-      .col-md-8.mx-auto
-        h2.mentor-form.text-center.bg-warning.text-white #{title}
+      .col-md-6.mx-auto
+        h2.mentor-form.mt-5.text-center.bg-warning.text-white #{title}
     .row
-      form.col-md-8.mx-auto(action="/user/mentor/form" method="post" enctype="multipart/form-data")
+      form.mt-5.col-md-6(action="/user/mentor/form" method="post" enctype="multipart/form-data")
         if user
           .form-group
             input.form-control.form-control(type="text" name="name" disabled="disabled" value=user.name)
@@ -28,8 +28,8 @@ mixin mentorForm()
             label(for="description") Description
             textarea(name="description" class="form-control" rows="5")
           input(type="submit" class="btn btn-warning btn-lg btn-block" value="POSTULER POUR DEVENIR MENTOR")
-        //- button(type="submit" class="btn btn-secondary btn-lg btn-block") Ajouter une session
-
+      .col-md-6
+        img.img-mentorform.mx-auto(src="/images/photos/rev6.jpg")
 
 
 

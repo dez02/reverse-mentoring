@@ -3,13 +3,15 @@ html {
   font-size: 10px; }
 
 body {
-  background: #f3f3f3; }
-  body:before {
+  background: #f3f3f3;
+  /* background: #ffffff; */
+
+}
+  /* body:before {
     content: '';
     display: block;
-    /* background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); */
     height: 10px;
-    width: 100%; }
+    width: 100%; } */
 
 .inner {
   max-width: 900px;
@@ -17,7 +19,17 @@ body {
   @media all and (max-width: 900px) {
     .inner {
       padding: 2rem; } }
+  .inner--flashes {
+    padding: 0; }
 
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+img {
+  max-width: 100%; }
 
 
 .jumbotron {
@@ -46,9 +58,7 @@ form {
   box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
   /* .form + .form {
     margin-top: 4rem; } */
-.form-group {
-  margin-top: 30px;
-}
+
 .form-control {
   padding: 0.75rem .75rem;
   font-size: 1.5rem;
@@ -56,23 +66,9 @@ form {
 .form-heading {
   color: #ffffff;
 }
-.loginform {
-  max-width: 80%;
-  background-color: #f8bc32;
-  margin: auto;
-  margin-top: 40px;
-  padding: 20px 70px 50px 54px;
-}
+
 .loginbutton {
   background-color: #f8bc32;
-}
-
-.registerform {
- max-width: 80%;
-  background-color: #f8bc32;
-  margin: auto;
-  margin-top: 40px;
-  padding-top: 20px 70px 50px 54px;
 }
 
 .form-img{
@@ -80,6 +76,7 @@ form {
   height: 150px;
   margin-left: 70px;
 }
+
 .courses {
   display: -ms-flexbox;
   display: flex;
@@ -125,7 +122,7 @@ form {
   font-size: 10px; }
   .course__action svg {
     width: 25px;
-    fill: green; }
+    fill: deeppink; }
   .course__action--edit a {
     border-bottom: 0; }
 
@@ -206,14 +203,7 @@ form {
   .flash p {
     margin: 0; }
 
-html {
-  box-sizing: border-box; }
 
-*, *:before, *:after {
-  box-sizing: inherit; }
-
-img {
-  max-width: 100%; }
 
 /* Document
    ========================================================================== */
@@ -623,9 +613,9 @@ template {
 html {
   font-size: 10px; }
 
-body {
+ body {
   font-size: 1.5rem;
-  color: #303030; }
+   }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 4rem;
@@ -671,7 +661,7 @@ a {
   font-size: 10rem;
   text-align: center; }
 
-.nav {
+/* .nav {
   height: 60px;
   display: -ms-flexbox;
   display: flex;
@@ -694,7 +684,7 @@ a {
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     text-transform: uppercase;
     /* padding: 1.2rem 2rem 1rem 2rem; */
-    display: block;
+   /* display: block;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -704,14 +694,70 @@ a {
     -ms-flex-pack: center;
         justify-content: center;
     transition: transform 0.2s;
-    border-bottom: 5px solid transparent; }
+    border-bottom: 5px solid transparent; }*/
+
+    /************************************************* NAVBAR ***********************************************/
     .nav__link svg {
       width: 40px;
       transition: all 0.2s;
       fill: white;
-      margin-bottom: 1rem;
+      /* margin-bottom: 1rem; */
        }
-    .nav__link:hover, .nav__link--active {
+
+       ul.navbar-header {
+        padding: 0;
+        margin-bottom: 0rem;
+        list-style: none;
+        background-color: #303030;
+        text-transform: uppercase;
+      }
+      .navbar-header a {
+        font-size: 13px;
+      }
+
+      .navbar-header a:hover {
+        color: #FFC40E;
+      }
+
+      .navbar-header {
+        display: flex;
+      }
+
+      li.register {
+        margin-left: auto;
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+      li.login {
+        margin-top: 15px;
+        margin-right:5px;
+      }
+
+      li.add {
+        margin-left: auto;
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+
+      li.account {
+        margin-left: 10px;
+      }
+
+      li.logout {
+        margin-top: 15px;
+      }
+      li.bementor {
+        margin-left: auto;
+        margin-right: 10px;
+        margin-top: 15px;
+      }
+
+
+
+
+
+
+    /*.nav__link:hover, .nav__link--active {
       border-bottom-color: rgba(0, 0, 0, 0.2);
       border-right-color: rgba(0, 0, 0, 0.05);
       background: #FFC40E; }
@@ -725,7 +771,7 @@ a {
       width: 200px;
       margin: 0; }
 
-@media all and (max-width: 1200px) {
+/*@media all and (max-width: 1200px) {
   .nav__link {
     padding-left: 1rem;
     padding-right: 1rem; }
@@ -769,14 +815,14 @@ a {
       width: 100%; }
   .heart-count:before {
     content: '\2665\FE0F';
-    margin-right: 1rem; } }
+    margin-right: 1rem; } } */
 
-
+/* SEARCH IMPUT*/
   .search__input {
     width: 550px;
     font-size: 2rem;
   }
-
+/* LAYOUT JUMBOTRON*/
   .container-fluid.jumbotron{
     background-image: url("/images/photos/reverse-mentoringjum.png");
     /* background-repeat: no-repeat; */
@@ -785,8 +831,8 @@ a {
     background-size: cover;
     padding: 0;
   }
-/* MENTORFORM*/
 
+/* MENTORFORM*/
 h2.mentor-form {
   border-radius: 40px;
 }
@@ -798,6 +844,10 @@ h2.mentor-form {
 .img-mentor {
   width: 140px;
 }
+/* Become mentor*/
+.img-mentorform {
+  padding-top: 50px;
+}
 
 .user-info {
   font-size: 35px;
@@ -805,10 +855,77 @@ h2.mentor-form {
   color: #ffffff;
 }
 
-ul.user-profil {
-  display: flex;
+/* Slogan*/
+a.slogan  {
+  color: #000000;
 }
 
+.avatar {
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
+
+/*SESSIONS*/
+
+h1.activities {
+  color: #576366;
+  border-bottom: 2px solid #f0f2f4;
+  padding: 10px 0 5px;
+  /* margin: -5px 0 30px; */
+}
+
+a.session {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.addsession {
+  border-radius: 10px;
+}
+
+/* .container-fluid.nav-header {
+  display: flex;
+}
+.push {
+  margin-left: auto;
+} */
+
+/*PAGINATION*/
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  background: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
+  .pagination__next {
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    padding: 1rem 3rem 1rem 1rem; }
+    .pagination__next a:after {
+      margin-left: 1rem;
+      content: '\2192'; }
+  .pagination__prev {
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+    padding: 1rem 1rem 1rem 3rem; }
+    .pagination__prev a:before {
+      margin-right: 1rem;
+      content: '\2190'; }
+  .pagination__text {
+    -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+    padding: 1rem;
+    text-align: center; }
+  .pagination a {
+    color: red;
+  }
 
 
 /*# sourceMappingURL=style.css.map*/

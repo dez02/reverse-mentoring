@@ -1,17 +1,16 @@
 mixin loginForm()
   .container
-    .row.pb-5
-      .mx-auto.col-md-8.col-md-offset-2.col-sm-8
-        .loginform
-          h2.form-heading.text-center Se connecter
-          form.mx-auto(action="/user/login" method="POST")
-            img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
-            .form-group
-              label(for="email") Adresse mail
-              input.form-control(type="email" name="email" aria-describedby="email" placeholder="Enter your email")
-            .form-group
-              label(for="password") Mot de passe
-              input.form-control(for="password" name="password" placeholder="password")
-            .form-group
-              input.btn.btn-secondary.btn-lg.btn-block.mt-5(type="submit" class="loginbutton" value="Se connecter")
+    .row.mt-5
+      .mx-auto.col-md-10.col-sm-10.bg-warning.pb-5.mt-5
+        h2.form-heading.text-center.text-warning Se connecter
+        form.mx-auto.mt-5(action="/user/login" method="POST")
+          img.form-img.rounded-circle(src="/images/photos/reverse-mentoring.png")
+          .form-group
+            label(for="email") Adresse mail
+            input.form-control(type="email" name="email" aria-describedby="email" placeholder="Enter your email")
+          .form-group
+            label(for="password") Mot de passe
+            input.form-control(for="password" name="password" placeholder="password")
+          .form-group
+            input.btn.btn-warning.btn-lg.btn-block.mt-5(type="submit" class="loginbutton" value="Se connecter")
 

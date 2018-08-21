@@ -2,41 +2,30 @@ doctype html
 html(lang="en")
   head
     title= `${title} | ${h.siteName}`
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
     link(rel='stylesheet', href='/dist/style.css')
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body
     block header
-      header.top
-        nav.nav
-          .nav__section.nav__section--pages
-            each item in h.menu
-              li.nav__item
-                a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
-                  != h.icon(item.icon)
-          .nav__section.nav__section--user
-            if user
-              if user.isMentor
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/courses/add", class=(currentPath.startsWith('/courses/add') ? 'nav__link--active' : ''))
-                  != h.icon('buttonadd')
-                  span Ajouter
-              else
-                if user.isMentor
-                li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : ''))
-                  != h.icon('buttonadd')
-                  span Devenir Mentor
-                //- span.heart-count #{user.hearts && user.hearts.length}
-              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/logout", class=(currentPath.startsWith('/user/logout') ? 'nav__link--active' : ''))
-                != h.icon('logout')
-                span Logout
-              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/account", class=(currentPath.startsWith('/user/account') ? 'nav__link--active' : ''))
-                img.avatar(src=user.gravatar + 'd=retro')
-                //- p #{user.name}
+      ul.navbar-header.mt-0(role='navigation')
+        li: a(href="/")
+          != h.icon('logo_B')
+          //- span.home Reverse Mentoring
+          if user
+            if user.isMentor
+              li.add: a(href="/courses/add") Ajouter
             else
-              //- li.nav-item.nav__item: a.nav-link.nav__link(href="/user/mentor/form", class=(currentPath.startsWith('/user/mentor/form') ? 'nav__link--active' : '')) Devenir Mentor
-              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/inscription", class=(currentPath.startsWith('/user/inscription') ? 'nav__link--active' : '')) S'inscrire
-              li.nav-item.nav__item: a.nav-link.nav__link(href="/user/login", class=(currentPath.startsWith('/user/login') ? 'nav__link--active' : '')) S'identifier
-
+              if user.isMentor
+              li.bementor: a(href="/user/mentor/form") Devenir Mentor
+                //- != h.icon('buttonadd')
+            li.logout: a(href="/user/logout") Déconnexion
+              //- != h.icon('logout')
+            li.account: a(href="/user/account")
+              img.avatar(src=user.gravatar + 'd=retro')
+          else
+            li.register: a(href="/user/inscription") S'inscrire
+            li.login: a(href="/user/login") Connexion
     block messages
       if locals.flashes
         .inner.inner--flashes

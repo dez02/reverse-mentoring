@@ -9,6 +9,11 @@ const courseSchema = new mongoose.Schema({ // Création du Schema
     trim: true,
     required: 'please enter a course name!',
   },
+  slogan: {
+    type: String,
+    trim: true,
+    required: 'please enter a slogan!',
+  },
   slug: String,
   description: {
     type: String,

@@ -2,27 +2,31 @@ extends layout
 
 block content
   .container.mt-5
-    h2.course_detail.text-center.mb-5
-      a.text-warning(href=`/courses/${course.slug}`) #{course.name}
+    .row
+      .col-md-10.bg-light.mx-auto
+        h2.course_detail.text-center.mb-5.text-primary
+          a.text-warning(href=`/courses/${course.slug}`) #{course.name}
     .row
       .col-md-10.mx-auto.bg-white
         .course_description.mt-5
           img(src=`/uploads/${course.photo || 'jc1.jpeg'}`)
-          p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"
-    .row.text-center
-      .col-md-10.mt-5
+        .col
+          p #{course.description}
+          //- p "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"
+    .row
+      .col-md-10.mx-auto.mt-5.bg-white.text-center
         img(src=`${course.mentor.gravatar}`).rounded-circle
     .row
-      .col-md-4.mx-auto
+      .col-md-10.mx-auto.text-center.bg-white
         p #{course.mentor.name}
         p #{course.mentor.email}
     .row
-      .col-md-4.mt-5
+      .col-md-10.bg-white.mx-auto
         h2.session-date Réserver une session
         ul.course-session
           each session in course.sessions
             li #{session.date}
-              //- afficher le button si n'est pas mentor du cours et logge
+              //- afficher le button si n'est pas mentor du cours et si le user est loggé
               if user && !user._id.equals(course.mentor._id)
                 //- afficher le button supply uniquement le cours est dispo
                 if !session.mentoree
@@ -33,7 +37,7 @@ block content
                 //- afficher le button non dispo
                 if session.mentoree && !session.mentoree.equals(user._id)
                   button(type="submit" disabled="disabled") Réservée
-    a.button.btn.btn-primary(href=`/user/account/${course.mentor.id}`) Voir profil
+        a.button.btn.btn-warning(href=`/user/account/${course.mentor.id}`) Voir profil
 
 
 

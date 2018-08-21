@@ -5,19 +5,22 @@ mixin courseForm(course = {})
   .row
     form.col-md-6(action=`/courses/add/${course._id || ''}` method="POST" enctype="multipart/form-data")
       //- ici jai 2 redirections possibles: soit courses/add soit s'il ya 1 id add/${course._id
-      form-group
+      .form-group
         label(for="name") Name
-        input.form-control(type="text" name="name" placeholder="Enter your name" value=course.name)
-      form-group
+        input.form-control(type="text" name="name" placeholder="Enter a name" value=course.name)
+      .form-group
+        label(for="slogan") Slogan
+        input.form-control(type="text" name="slogan" placeholder="ex: #Comment devenir pro du pattern design" value=course.slogan)
+      .form-group
         label(for="description") Description
         textarea.form-control(name="description" rows="3")= course.description
       //-upload Image
-      form-group
+      .form-group
         label(for="photo") Photo
           input.form-control-file(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
           if course.photo
             img(src=`/uploads/${course.photo}`, alt=course.name with=200)
-      form-group
+      .form-group
         input.btn.btn-warning.btn-lg.btn-block.text-white.mt-5(type="submit" value="Enregistrer")
     .col-md-6
       img.img-newCourse.mx-auto(src="/images/photos/rev7.jpeg")

@@ -7,7 +7,8 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const courseRouter = express.Router();
 
 // afficher liste des activités
-courseRouter.get('/', courseController.getCourses);
+courseRouter.get('/', catchErrors(courseController.getCourses));
+courseRouter.get('/page/:page', catchErrors(courseController.getCourses));
 
 // ajouter une activité
 courseRouter.get('/add', authController.isLoggedIn, courseController.addCourse);

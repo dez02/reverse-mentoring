@@ -26,19 +26,19 @@ exports.addSession = async (req, res) => {
 
 // S'inscrire à une session
 exports.supplySession = async (req, res) => {
-  // TODO verifier l utilisateur est connecter, et session est disponible => mentoree === null
+  // TODO vérifier que l'utilisateur est connecté, et si la session est disponible => mentoree === null
   await Session.findOneAndUpdate(
-    { _id: req.params.idSession },
+    { _id: req.params.idSession }, // je récup la session
     { $set: { mentoree: req.user } },
   ).exec();
 
-  // todo flash pour dire ton inscription est pris en compte
-  req.flash('success', 'Successfully Added');
+  // todo flash pour dire qu'une inscription est prise en compte
+  req.flash('success', 'Votre inscription a bien été prise en compte');
   res.json();
 };
 
 exports.cancelSession = async (req, res) => {
-  // TODO Securiser l'acces si mentoree === userConnected
+  // TODO Securiser l'accès si mentoree === userConnected
   await Session.findOneAndUpdate(
     { _id: req.params.idSession },
     { $unset: { mentoree: req.user } },
@@ -47,6 +47,3 @@ exports.cancelSession = async (req, res) => {
   res.json();
 };
 
-
-// description je deviens mentor?
-// photo mentor?

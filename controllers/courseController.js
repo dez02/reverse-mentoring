@@ -40,8 +40,32 @@ exports.resize = async (req, res, next) => {
 
 // GET LISTE COURS j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
-  const courses = await Course.find();
-  res.render('courses', { courses });
+  const page = req.params.page || 1;
+  const limit = 6;
+  const skip = (page * limit) - limit;
+
+  const coursesPromise = Course
+    .find()
+    .skip(skip)
+    .limit(limit);
+
+  const countPromise = Course.count();
+
+  const [courses, count] = await Promise.all([coursesPromise, countPromise]);
+  const pages = Math.ceil(count / limit);
+  if (!courses.length && skip) {
+    req.flash('info', `Oups! Vous avez demandé la page ${page}. Mais elle n'existe pas. Vous allez être redirigé(e) sur la page ${pages}`);
+    res.redirect(`/courses/page/${pages}`);
+    return;
+  }
+
+  res.render('courses', {
+    title: 'Reverse-Mentoring',
+    courses,
+    page,
+    pages,
+    count,
+  });
   // console.log(courses);
   // res.json(courses);
 };
@@ -55,7 +79,7 @@ exports.addCourse = (req, res) => {
 // POSTER UN COURS (POST) Créer
 exports.createCourse = async (req, res) => {
   req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
-  // le mentor est bien le mm q celui du user
+  // l'id du mentor est bien le mm q celui du user
   const course = await (new Course(req.body)).save(); // Création d'une instance de Model
   req.flash('success', `Successfully Created ${course.name}`);
   res.redirect('/courses');
