@@ -57,4 +57,6 @@ typings/
 # dotenv environment variables file
 variables.env
 variables.env.now
+.DS_Store
+public/uploads/*
 
