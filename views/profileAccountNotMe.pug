@@ -15,12 +15,23 @@ block content
             else
               p.text-light Décrivez-vous en quelques mots
 
-    .list-course
-      h1.text-center.activities Activités
-      ul.user-profil
-        each course in courses
-          .row
-            li.nav-item.nav__item #{course.name}
+    .row.bg-white
+      h1.activities.mx-auto Activités proposées
+    .row.bg-white
+      each course in courses
+        .course
+          .course__hero
+            .course__actions
+              a.course-img(href=`/courses/edit/${course._id}`)
+                img.course-img(src=`/uploads/${course.photo || 'code.jpg'}`)
+            h2.title
+              a(href=`/courses/${course.slug}`) #{course.name}
+          .course__details
             ul
               each session in course.sessions
-                li.nav-item.nav__item #{session.date}
+                if session.date >= Date.now()
+                  li #{h.moment(session.date).format("DD/MM/YYYY")}
+            a.session(style="color: blue" href=`/sessions/form/${course._id}`)
+
+
+

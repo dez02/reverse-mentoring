@@ -4,7 +4,7 @@ mixin courseCard(course = {})
     .course__hero
       .course__actions
         a.course-img(href=`/courses/edit/${course._id}`)
-          img.course-img(src=`/uploads/${course.photo || 'code.jpg'}`)
+          img.course-img(src=`/uploads/${course.photo || 'rev5.jpg'}`)
       h2.title
         a(href=`/courses/${course.slug}`) #{course.name}
     .course__details

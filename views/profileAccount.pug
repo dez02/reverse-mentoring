@@ -1,8 +1,8 @@
 extends layout
-//- include mixins/_courseCard
+
 block content
   .container
-    .row
+    .row.info-mentor
       .col.md-8.bg-warning.text-center
         img.img-mentor.rounded-circle.mt-5(src=`${user.gravatar}`)
         .col
@@ -19,7 +19,7 @@ block content
               p.text-light Décrivez-vous en quelques mots
     .row.bg-white
       h1.activities.mx-auto Activités proposées
-    .row.bg-white
+    .row.sessions-liste.bg-white
       each course in courses
         .course
           .course__hero
@@ -31,7 +31,8 @@ block content
           .course__details
             ul
               each session in course.sessions
-                li #{session.date}
+                if session.date >= Date.now()
+                  li #{h.moment(session.date).format("DD/MM/YYYY")}
             a.session(style="color: blue" href=`/sessions/form/${course._id}`)
               button.addsession Ajouter une session
 

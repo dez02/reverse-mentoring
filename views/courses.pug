@@ -5,16 +5,15 @@ include mixins/_pagination
 
 block content
   .container-fluid.jumbotron
-    p #{title}
+    //- p #{title}
   .container
     .row
       .col-md-6.mx-auto
-        .nav__section.nav__section--search
-          .input-group.mb-3
-            .search
-              input.form-control.search__input(type="search" placeholder="Rechercher une activité..." arial-label="Rechercher une activité" name="search")
-              .input-group-append
-              .search__results
+        .input-group.mb-3
+          .search
+            input.form-control.search__input(type="search" placeholder="Rechercher une activité..." arial-label="Rechercher une activité" name="search")
+            .input-group-append
+            .search__results
     //- cards
   .container
     .courses

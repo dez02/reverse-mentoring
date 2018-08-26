@@ -34,7 +34,7 @@ exports.supplySession = async (req, res) => {
 
   // todo flash pour dire qu'une inscription est prise en compte
   req.flash('success', 'Votre inscription a bien été prise en compte');
-  res.json();
+  res.redirect('/');
 };
 
 exports.cancelSession = async (req, res) => {
@@ -47,3 +47,5 @@ exports.cancelSession = async (req, res) => {
   res.json();
 };
 
+// icone  button add
+// icone remove

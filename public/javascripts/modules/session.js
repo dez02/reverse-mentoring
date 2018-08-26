@@ -27,7 +27,7 @@ function sessionUpdate(session) {
       if (button.getAttribute('name') === 'cancel') {
         cancelSession(event.target.value, button);
       } else {
-        supplySession(event.target.value, button); // value? button?
+        supplySession(event.target.value, button);
       }
     });
   });

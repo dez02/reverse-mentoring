@@ -697,21 +697,21 @@ a {
     border-bottom: 5px solid transparent; }*/
 
     /************************************************* NAVBAR ***********************************************/
-    .nav__link svg {
+    /* .nav__link svg {
       width: 40px;
       transition: all 0.2s;
       fill: white;
-      /* margin-bottom: 1rem; */
-       }
+      margin-bottom: 1rem;
+       }*/
 
-       ul.navbar-header {
+       /* ul.navbar-header {
         padding: 0;
         margin-bottom: 0rem;
         list-style: none;
         background-color: #303030;
         text-transform: uppercase;
-      }
-      .navbar-header a {
+      }*/
+      /* .navbar-header a {
         font-size: 13px;
       }
 
@@ -739,9 +739,7 @@ a {
         margin-top: 15px;
       }
 
-      li.account {
-        margin-left: 10px;
-      }
+
 
       li.logout {
         margin-top: 15px;
@@ -750,7 +748,14 @@ a {
         margin-left: auto;
         margin-right: 10px;
         margin-top: 15px;
+      } */
+
+     /* .navbar-nav {
+        display: flex;
       }
+      .navbar-nav .account {
+        margin-left: 200px;
+      }  */
 
 
 
@@ -818,9 +823,10 @@ a {
     margin-right: 1rem; } } */
 
 /* SEARCH IMPUT*/
-  .search__input {
-    width: 550px;
-    font-size: 2rem;
+
+  .search {
+    width: 100%;
+    /* font-size: 2rem; */
   }
 /* LAYOUT JUMBOTRON*/
   .container-fluid.jumbotron{
@@ -877,6 +883,10 @@ h1.activities {
   /* margin: -5px 0 30px; */
 }
 
+.row.sessions-liste {
+  padding: 0 20px 20px 0;
+}
+
 a.session {
   display: flex;
   justify-content: flex-end;
@@ -886,12 +896,6 @@ button.addsession {
   border-radius: 10px;
 }
 
-/* .container-fluid.nav-header {
-  display: flex;
-}
-.push {
-  margin-left: auto;
-} */
 
 /*PAGINATION*/
 

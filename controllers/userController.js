@@ -121,7 +121,7 @@ exports.registerMentor = async (req, res, next) => {
     await register(user, req.body.password); // le pluggin passport(ds usermodel) nous fournit
     // la méthode register que nous transformons en promesse
   }
-
+  req.flash('success', 'Félicitations! Vous êtes à présent un mentor');
   res.redirect('/');
 };
 

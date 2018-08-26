@@ -110,7 +110,7 @@ exports.updateCourse = async (req, res) => {
     },
   )
     .exec();
-  req.flash('Success', `Sucessfully updated ${course.name}. <a href="/courses/${course.slug}">Voir le Cours<a>`);
+  req.flash('success', `Sucessfully updated ${course.name}. <a href="/courses/${course.slug}">Voir le Cours<a>`);
   res.redirect(`/courses/edit/${course._id}`);
 };
 
