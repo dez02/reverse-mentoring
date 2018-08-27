@@ -17,7 +17,7 @@ block content
 
     .row.bg-white
       h1.activities.mx-auto Activités proposées
-    .row.bg-white
+    .row.sessions-liste.bg-white
       each course in courses
         .course
           .course__hero
@@ -27,10 +27,10 @@ block content
             h2.title
               a(href=`/courses/${course.slug}`) #{course.name}
           .course__details
-            ul
+            ul.sessions
               each session in course.sessions
                 if session.date >= Date.now()
-                  li #{h.moment(session.date).format("DD/MM/YYYY")}
+                  li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
             a.session(style="color: blue" href=`/sessions/form/${course._id}`)
 
 

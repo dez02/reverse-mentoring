@@ -25,7 +25,7 @@ block content
           ul.course-session
             each session in course.sessions
               if session.date >= Date.now()
-                li #{h.moment(session.date).format("DD/MM/YYYY")}
+                li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
                 //- afficher le button si n'est pas mentor du cours et si le user est loggé
                 if user && !user._id.equals(course.mentor._id)
                   //- afficher le button supply uniquement le cours est dispo

@@ -11,47 +11,23 @@ html(lang="en")
       .nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
         a(href="/" class="navbar-brand")
           != h.icon('logo_B')
-          Reverse Mentoring
-        button(class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu")
+          span.header Reverse Mentoring
+        button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu")
           span(class="navbar-toggler-icon")
-        div(class="collapse navbar-collapse" id="navbarMenu")
-          ul(class="navbar-nav")
+        div(class="collapse navbar-collapse justify-content-end" id="navbarMenu")
+          ul.header(class="navbar-nav")
             if user
               if user.isMentor
-                li.add.nav-item: a(href="/courses/add" class="nav-link") Ajouter
+                li.add.nav-item.active: a(href="/courses/add" class="nav-link") Ajouter
               else
                 if user.isMentor
-                  li.bementor.nav-item: a(href="/user/mentor/form" class="nav-link") Devenir Mentor
-              li.logout: a(href="/user/logout") Déconnexion
-              li.account: a(href="/user/account")
+                  li.bementor.nav-item.active: a(href="/user/mentor/form" class="nav-link") Devenir Mentor
+              li.logout.nav-item.active: a(href="/user/logout") Déconnexion
+              li.account.nav-item.active: a(href="/user/account")
                 img.avatar(src=user.gravatar + 'd=retro')
             else
-              li.register: a(href="/user/inscription") S'inscrire
-              li.login: a(href="/user/login") Connexion
-
-
-
-
-      //- .row
-      //-   .col
-      //-     ul.navbar-header.mt-0(role='navigation')
-      //-       li.navbar-brand: a(href="/")
-      //-         != h.icon('logo_B')
-      //-         //- span.home Reverse Mentoring
-      //-         if user
-      //-           if user.isMentor
-      //-             li.add: a(href="/courses/add") Ajouter
-      //-           else
-      //-             if user.isMentor
-      //-             li.bementor: a(href="/user/mentor/form") Devenir Mentor
-      //-               //- != h.icon('buttonadd')
-      //-           li.logout: a(href="/user/logout") Déconnexion
-      //-             //- != h.icon('logout')
-      //-           li.account: a(href="/user/account")
-      //-             img.avatar(src=user.gravatar + 'd=retro')
-      //-         else
-      //-           li.register: a(href="/user/inscription") S'inscrire
-      //-           li.login: a(href="/user/login") Connexion
+              li.register.nav-item.active: a(href="/user/inscription") S'inscrire
+              li.login.nav-item.active: a(href="/user/login") Connexion
     block messages
       if locals.flashes
         .inner.inner--flashes
@@ -72,9 +48,6 @@ html(lang="en")
       script(type="text/javascript" src="/dist/App.bundle.js")
 
 
-
-
-//- pre= h.dump
 
 
 

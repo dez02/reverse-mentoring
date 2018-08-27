@@ -29,10 +29,10 @@ block content
             h2.title
               a(href=`/courses/${course.slug}`) #{course.name}
           .course__details
-            ul
+            ul.sessions
               each session in course.sessions
                 if session.date >= Date.now()
-                  li #{h.moment(session.date).format("DD/MM/YYYY")}
+                  li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
             a.session(style="color: blue" href=`/sessions/form/${course._id}`)
               button.addsession Ajouter une session
 
