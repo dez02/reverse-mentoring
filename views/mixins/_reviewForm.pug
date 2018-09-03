@@ -1,0 +1,11 @@
+mixin reviewForm(course)
+  .row
+    .col-md-10.mx-auto.mt-5.bg-white
+      form.reviewer.mt-5(action=`/reviews/add/${course._id}` method="POST")
+        textarea(name="text" placeholder="Vous souhaitez laisser un commentaire? ...")
+        .reviewer__meta
+          .reviewer__stars
+            each num in [5,4,3,2,1]
+              input(type="radio" required id=`star${num}` name="rating" value=num)
+              label(for=`star${num}`) #{num} Stars
+        input.button.bg-warning(type="submit" value="Valider →")

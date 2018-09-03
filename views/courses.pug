@@ -4,7 +4,9 @@ include mixins/_courseCard
 include mixins/_pagination
 
 block content
-  .container-fluid.jumbotron
+  header.jumbotron.jumbotron-fluid
+    .container
+      img.img-header.img-responsive(src="/images/photos/reverse-mentoringjum4.png")
     //- p #{title}
   .container
     .row
@@ -22,7 +24,7 @@ block content
     +pagination(page, pages, count)
 
   //- jumbotron footer
-  .jumbotron.jumbotron-fluid.text-black.mt-5.mb-0
+  .jumbotron.jumbotron-fluid.jumbotron-footer.text-black.mt-5.mb-0
     .container.text-sm-center
       a(href="/user/mentor/form")
         h2 Deviens Mentor

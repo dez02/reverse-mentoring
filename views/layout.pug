@@ -18,13 +18,15 @@ html(lang="en")
           ul.header(class="navbar-nav")
             if user
               if user.isMentor
-                li.add.nav-item.active: a(href="/courses/add" class="nav-link") Ajouter
+                li.add.nav-item.active: a(href="/courses/add") Ajouter une activité
+                li.logout.nav-item.active: a(href="/user/logout") Déconnexion
+                li.account.nav-item.active: a(href="/user/account")
+                  img.avatar(src=user.gravatar + 'd=mp')
               else
-                if user.isMentor
-                  li.bementor.nav-item.active: a(href="/user/mentor/form" class="nav-link") Devenir Mentor
-              li.logout.nav-item.active: a(href="/user/logout") Déconnexion
-              li.account.nav-item.active: a(href="/user/account")
-                img.avatar(src=user.gravatar + 'd=retro')
+                li.bementor.nav-item.active: a(href="/user/mentor/form") Devenir Mentor
+                li.logout.nav-item.active: a(href="/user/logout") Déconnexion
+                li.account.nav-item.active: a(href="/user/account")
+                  img.avatar(src=user.gravatar + 'd=mp')
             else
               li.register.nav-item.active: a(href="/user/inscription") S'inscrire
               li.login.nav-item.active: a(href="/user/login") Connexion

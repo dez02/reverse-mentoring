@@ -38,7 +38,7 @@ const userSchema = new Schema({
 
 userSchema.virtual('gravatar').get(function () {
   const hash = md5(this.email);
-  return `https://gravatar.com/avatar/${hash}?s=50`;
+  return `https://gravatar.com/avatar/${hash}?s=100`;
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

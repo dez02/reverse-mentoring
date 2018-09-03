@@ -8,6 +8,8 @@ const courseRouter = express.Router();
 
 // afficher liste des activités
 courseRouter.get('/', catchErrors(courseController.getCourses));
+
+
 courseRouter.get('/page/:page', catchErrors(courseController.getCourses));
 
 // ajouter une activité

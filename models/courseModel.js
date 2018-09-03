@@ -31,6 +31,9 @@ const courseSchema = new mongoose.Schema({ // Création du Schema
     type: mongoose.Schema.ObjectId,
     ref: 'Session',
   }],
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
 });
 
 courseSchema.index({
@@ -45,6 +48,12 @@ courseSchema.pre('save', function (next) {
   }
   this.slug = slug(this.name);
   next();
+});
+
+courseSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'course',
 });
 
 module.exports = mongoose.model('Course', courseSchema); // Création du model qui va me permettre d'insérer des données dans mdb en respectant le schema

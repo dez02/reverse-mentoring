@@ -1,6 +1,10 @@
 extends layout
 
+include mixins/_reviewForm
+include mixins/_review
+
 block content
+  //- pre=h.dump(course.reviews)
   .container.mt-5
     .row
       .col-md-10.bg-light.mx-auto
@@ -10,33 +14,51 @@ block content
       .col-md-10.mx-auto.bg-white
         .course_description.mt-5
           img(src=`/uploads/${course.photo || 'rev5.jpg'}`)
-        .col
-          p #{course.description}
+      .col-md-6
+        p #{course.description}
     .row
-      .col-md-10.bg-white.mt-5.mx-auto
+      .col-md-10.avatar-mentor.bg-white.mx-auto.mt-5
         img(src=`${course.mentor.gravatar}`).rounded-circle.mt-5
-        row
-          col-md-2
-            p #{course.mentor.name}
-            p #{course.mentor.email}
-            a.button.btn.btn-warning.btn-lg(href=`/user/account/${course.mentor.id}`) Voir profil
-        .col
-          h2.session-date.text-center Réserver une session
-          ul.course-session
-            each session in course.sessions
-              if session.date >= Date.now()
-                li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
+
+        .col-md-2.mentor-info.bg-white
+          a.mentorinfo(href=`/user/account/${course.mentor.id}`)
+            p.mt-5 #{course.mentor.name}
+            i(class="fa fa-envelope" aria-hidden="true") #{course.mentor.email}
+    .row
+      .col-md-10.mx-auto.bg-white
+        a.button.btn.btn-warning.btn-lg.mt-5(href=`/user/account/${course.mentor.id}`) Voir profil Mentor
+      .col-md-10.bg-white.mx-auto
+        h2.session-date.text-center.mb-5 Dates de sessions
+        ul.course-session
+          each session in course.sessions
+            if session.date >= Date.now()
+              .row
+                .col-md-2
+                  li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
                 //- afficher le button si n'est pas mentor du cours et si le user est loggé
                 if user && !user._id.equals(course.mentor._id)
                   //- afficher le button supply uniquement le cours est dispo
                   if !session.mentoree
-                    button(type="submit" name="supply" value=`${session.id}`) S'inscrire
+                      .col-md-2
+                        button.button-session.btn.btn-info.px-5(type="submit" name="supply" value=`${session.id}`) S'inscrire
                   //- afficher le button cancel uniquement si c'est bien le mentoree qui s'est inscrit au cours
-                  if session.mentoree && session.mentoree.equals(user._id)
-                    button(type="submit" name="cancel" value=`${session.id}`) Annuler
-                  //- afficher le button non dispo
-                  if session.mentoree && !session.mentoree.equals(user._id)
-                    button(type="submit" disabled="disabled") Réservée
+                if session.mentoree && session.mentoree.equals(user._id)
+                  .col-md-2
+                    button.button-session.btn.btn-danger(type="submit" name="cancel" value=`${session.id}`) Annuler
+                //- afficher le button non dispo
+                if session.mentoree && !session.mentoree.equals(user._id)
+                      .col-md-2
+                        button.button-session.btn.btn-success.px-5.mb-5(type="submit" disabled="disabled") Réservée
+                //- if !session
+                //-   p Pas de session planifiée pour cette activité actuellement.
+    if user
+      +reviewForm(course)
+
+    if course.reviews
+      .reviews
+        each review in course.reviews
+          +review(review)
+
 
 
 

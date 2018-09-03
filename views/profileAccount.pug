@@ -3,7 +3,7 @@ extends layout
 block content
   .container
     .row.info-mentor
-      .col.md-8.bg-warning.text-center
+      .col.md-8.bg-warning.text-center.mt-5
         img.img-mentor.rounded-circle.mt-5(src=`${user.gravatar}`)
         .col
           .info-block.text-editor
@@ -34,8 +34,10 @@ block content
                 if session.date >= Date.now()
                   li.sessions #{h.moment(session.date).format("DD/MM/YYYY")}
             a.session(style="color: blue" href=`/sessions/form/${course._id}`)
-              button.addsession Ajouter une session
+              button.addsession.button-session.btn.btn-secondary Ajouter une session
 
+                if session && session.mentoree
+                  button.button-session.btn.btn-success.px-5.mb-5(type="submit" disabled="disabled") Réservée
 
 
 

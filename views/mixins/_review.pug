@@ -1,0 +1,15 @@
+mixin review(review)
+  .row
+    .col-md-10.mx-auto.bg-white.mt-5
+      .review__header
+        .review__mentor
+          //- img.avatar(src=review.mentor.gravatar)
+          //- p= review.mentor.name
+        .review__stars(title=`Rated ${review.rating} our of 5 stars`)
+          = `★`.repeat(review.rating)
+          = `☆`.repeat(5 - review.rating)
+        time.review__time(datetime=review.created)= h.moment(review.created).fromNow()
+      .review__body
+        p=review.text
+
+

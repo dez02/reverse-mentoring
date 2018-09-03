@@ -76,7 +76,7 @@ exports.addCourse = (req, res) => {
   res.render('addnewcourse', { title: 'Ajouter Une Activité' });
 };
 
-// POSTER UN COURS (POST) Créer
+// POSTER UN COURS (POST)
 exports.createCourse = async (req, res) => {
   req.body.mentor = req.user._id; // avant de créer un cours je m'assure q
   // l'id du mentor est bien le mm q celui du user
@@ -116,7 +116,9 @@ exports.updateCourse = async (req, res) => {
 
 // Find the course given the slug
 exports.getCourseBySlug = async (req, res, next) => {
-  const course = await Course.findOne({ slug: req.params.slug }).populate('mentor').populate('sessions');
+  const course = await Course.findOne({ slug: req.params.slug })
+    .populate('mentor reviews')
+    .populate('sessions');
   // res.json(course.mentor);
   if (!course) return next(); // middleware next me permet de passer à la suite et
   //  d'afficher un 404 si jms mon cours n'existe pas
