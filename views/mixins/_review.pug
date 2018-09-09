@@ -3,8 +3,9 @@ mixin review(review)
     .col-md-10.mx-auto.bg-white.mt-5
       .review__header
         .review__mentor
-          //- img.avatar(src=review.mentor.gravatar)
-          //- p= review.mentor.name
+          if user && session && session.mentoree && session.mentoree.equals(user._id)
+            img.avatar(src=review.user.gravatar)
+          //- p= review.mentoree.name
         .review__stars(title=`Rated ${review.rating} our of 5 stars`)
           = `★`.repeat(review.rating)
           = `☆`.repeat(5 - review.rating)

@@ -14,7 +14,6 @@ block content
       .col-md-10.mx-auto.bg-white
         .course_description.mt-5
           img(src=`/uploads/${course.photo || 'rev5.jpg'}`)
-      .col-md-6
         p #{course.description}
     .row
       .col-md-10.avatar-mentor.bg-white.mx-auto.mt-5
@@ -38,15 +37,15 @@ block content
                 //- afficher le button si n'est pas mentor du cours et si le user est loggé
                 if user && !user._id.equals(course.mentor._id)
                   //- afficher le button supply uniquement le cours est dispo
-                  if !session.mentoree
+                  if session && !session.mentoree
                       .col-md-2
                         button.button-session.btn.btn-info.px-5(type="submit" name="supply" value=`${session.id}`) S'inscrire
                   //- afficher le button cancel uniquement si c'est bien le mentoree qui s'est inscrit au cours
-                if session.mentoree && session.mentoree.equals(user._id)
+                if user && session && session.mentoree && session.mentoree.equals(user._id)
                   .col-md-2
                     button.button-session.btn.btn-danger(type="submit" name="cancel" value=`${session.id}`) Annuler
                 //- afficher le button non dispo
-                if session.mentoree && !session.mentoree.equals(user._id)
+                if user && session && session.mentoree && !session.mentoree.equals(user._id)
                       .col-md-2
                         button.button-session.btn.btn-success.px-5.mb-5(type="submit" disabled="disabled") Réservée
                 //- if !session

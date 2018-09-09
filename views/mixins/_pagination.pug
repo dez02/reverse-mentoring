@@ -4,12 +4,12 @@ mixin pagination(page, pages, count)
       .pagination
         .pagination__prev
           if page > 1
-            a(href=`/courses/page/${page - 1}`) Précédente
+            a(href=`/courses/page/${page - 1}`) 
         .pagination__text
           p Page #{page} à #{pages} - #{count} Activités
         .pagination__next
           if page < pages
-            a(href=`/courses/page/${parseFloat(page) + 1}`) Suivante
+            a(href=`/courses/page/${parseFloat(page) + 1}`)
 
 
 

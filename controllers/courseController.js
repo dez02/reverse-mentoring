@@ -38,6 +38,7 @@ exports.resize = async (req, res, next) => {
   next();
 };
 
+
 // GET LISTE COURS j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
   const page = req.params.page || 1;
@@ -119,6 +120,7 @@ exports.getCourseBySlug = async (req, res, next) => {
   const course = await Course.findOne({ slug: req.params.slug })
     .populate('mentor reviews')
     .populate('sessions');
+
   // res.json(course.mentor);
   if (!course) return next(); // middleware next me permet de passer à la suite et
   //  d'afficher un 404 si jms mon cours n'existe pas

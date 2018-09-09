@@ -56,4 +56,12 @@ courseSchema.virtual('reviews', {
   foreignField: 'course',
 });
 
+function autopopulate(next) {
+  this.populate('reviews');
+  next();
+}
+
+courseSchema.pre('find', autopopulate);
+courseSchema.pre('findOne', autopopulate);
+
 module.exports = mongoose.model('Course', courseSchema); // Création du model qui va me permettre d'insérer des données dans mdb en respectant le schema
