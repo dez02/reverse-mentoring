@@ -119,6 +119,7 @@ exports.updateCourse = async (req, res) => {
 exports.getCourseBySlug = async (req, res, next) => {
   const course = await Course.findOne({ slug: req.params.slug })
     .populate('mentor reviews')
+    // .populate('mentoree reviews')
     .populate('sessions');
 
   // res.json(course.mentor);
@@ -134,4 +135,8 @@ exports.searchCourses = async (req, res) => {
   res.json(courses);
 };
 
-// Get mentorCourse
+// Delete course
+exports.deleteCourse = async (req, res) => {
+  const course = await Course.findByIdAndRemove({ _id: req.params.id });
+  res.redirect('/courses');
+};

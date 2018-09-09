@@ -37,7 +37,7 @@ courseRouter.get('/:slug', catchErrors(courseController.getCourseBySlug));
 // Rechercher un cours dans la barre de recherche front
 courseRouter.get('/api/search', catchErrors(courseController.searchCourses));
 
-// Obtenir la liste des cours d'un mentor
-// courseRouter.get('/:id_mentor', catchErrors(courseController.getCourseMentorId));
+// Delete course
+courseRouter.get('/delete/:id', catchErrors(courseController.deleteCourse));
 
 module.exports = courseRouter;

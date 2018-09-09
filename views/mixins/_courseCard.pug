@@ -13,7 +13,11 @@ mixin courseCard(course = {})
 
       if user && course.mentor.equals(user._id)
         .course__action.course__action--edit
-          a(href=`/courses/edit/${course._id}`)
+          a.edit(href=`/courses/edit/${course._id}`)
             != h.icon('pencil')
+          a.delete(href=`/courses/delete/${course._id}`)
+            i(class="fa fa-trash-o" aria-hidden="true")
+
+
 
 

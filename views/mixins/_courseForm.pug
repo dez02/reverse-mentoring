@@ -7,7 +7,7 @@ mixin courseForm(course = {})
       //- ici jai 2 redirections possibles: soit courses/add soit s'il ya 1 id add/${course._id
       .form-group
         label(for="name") Name
-        input.form-control(type="text" name="name" placeholder="Enter a name" value=course.name)
+        input.form-control(type="text" name="name" placeholder="nom de l'activité..." value=course.name)
       .form-group
         label(for="slogan") Slogan
         input.form-control(type="text" name="slogan" placeholder="ex: #Comment devenir pro du pattern design" value=course.slogan)

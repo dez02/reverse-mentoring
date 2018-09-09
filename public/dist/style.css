@@ -167,6 +167,12 @@ span.header {
     left: 0;
     object-fit: cover; }
 
+  .fa.fa-trash-o {
+    color: cadetblue;
+    font-size: 22px;
+    margin-left: 27rem;
+  }
+
 /*NAVBAR*/
 
 li.register {
