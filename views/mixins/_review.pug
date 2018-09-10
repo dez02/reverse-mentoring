@@ -5,8 +5,10 @@ mixin review(review)
         .review__mentor
           //- if user && session && session.mentoree && session.mentoree.equals(user._id)
           //- pre= h.dump(review)
-          img.avatar(src=review.mentor.gravatar)
-        p= review.mentor.name
+          if review.mentor
+            img.avatar(src=review.mentor.gravatar)
+        if review.mentor
+          p= review.mentor.name
 
         .review__stars(title=`Rated ${review.rating} our of 5 stars`)
           = `★`.repeat(review.rating)

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1008,7 +1008,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var axios = __webpack_require__(2);
-var dompurify = __webpack_require__(30);
+var dompurify = __webpack_require__(29);
 
 function searchResultsHTML(courses) {
   return courses.map(function (course) {
@@ -1869,33 +1869,6 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-var _bling = __webpack_require__(9);
-
-var _typeAhead = __webpack_require__(11);
-
-var _typeAhead2 = _interopRequireDefault(_typeAhead);
-
-var _session = __webpack_require__(10);
-
-var _session2 = _interopRequireDefault(_session);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _typeAhead2.default)((0, _bling.$)('.search')); // ce fichier représente mon entry point. c'est donc dans celui-ci que je vais importer
-// mes fichiers scss et bootstrap
-
-// import '../sass/style.scss';
-// import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-
-(0, _session2.default)((0, _bling.$)('.course-session'));
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 var __WEBPACK_AMD_DEFINE_RESULT__;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2703,6 +2676,33 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     return DOMPurify;
 });
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _bling = __webpack_require__(9);
+
+var _typeAhead = __webpack_require__(11);
+
+var _typeAhead2 = _interopRequireDefault(_typeAhead);
+
+var _session = __webpack_require__(10);
+
+var _session2 = _interopRequireDefault(_session);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _typeAhead2.default)((0, _bling.$)('.search')); // ce fichier représente mon entry point. c'est donc dans celui-ci que je vais importer
+// mes fichiers scss et bootstrap
+
+// import '../sass/style.scss';
+// import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+(0, _session2.default)((0, _bling.$)('.course-session'));
 
 /***/ })
 /******/ ]);

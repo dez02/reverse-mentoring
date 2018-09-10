@@ -58,5 +58,4 @@ typings/
 variables.env
 variables.env.now
 .DS_Store
-public/uploads/*
 

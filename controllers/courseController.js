@@ -38,7 +38,6 @@ exports.resize = async (req, res, next) => {
   next();
 };
 
-
 // GET LISTE COURS j'interroge ma base pour afficher tous les cours
 exports.getCourses = async (req, res) => {
   const page = req.params.page || 1;
