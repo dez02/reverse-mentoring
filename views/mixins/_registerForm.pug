@@ -2,20 +2,20 @@ mixin registerForm()
   .container
     .row.mt-5
       .mx-auto.col-md-8.bg-warning.pb-5.mt-5
-        form.mx-auto.mt-5(action="/user/inscription" method="POST")
+        form.mx-auto.mt-5.text-center(action="/user/inscription" method="POST")
           img.form-img.rounded-circle(src="/images/photos/rev6.jpg")
-          .form-group
-            label(for="name") Nom
-            input.form-control(type="text" name="name" aria-describedby="name" placeholder="Enter your name")
-          .form-group
-            label(for="email") Adresse mail
-            input.form-control(type="email" name="email" aria-describedby="email" placeholder="Enter your email")
-          .form-group
-            label(for="password") Mot de passe
-            input.form-control(type="password" name="password" placeholder="password")
-          .form-group
-            label(for="password-confirm" name="password-confirm") Confirmation du mot de passe
-            input.form-control(type="password" name="password-confirm")
+          .form-group.mt-5
+            label(for="name")
+            input.form-control(type="text" name="name" aria-describedby="name" placeholder="Entrez un nom")
+          .form-group.mt-5
+            label(for="email")
+            input.form-control(type="email" name="email" aria-describedby="email" placeholder="Entrez une adresse mail")
+          .form-group.mt-5
+            label(for="password")
+            input.form-control(type="password" name="password" placeholder="Mot de passe")
+          .form-group.mt-5
+            label(for="password-confirm" name="password-confirm")
+            input.form-control(type="password" name="password-confirm" placeholder="Confirmation du mot de passe")
           .form-group
             input.btn.btn-warning.btn-lg.btn-block.mt-5(type="submit" value="S'inscrire")
 
