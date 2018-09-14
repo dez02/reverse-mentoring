@@ -172,6 +172,10 @@ span.header {
     font-size: 22px;
     margin-left: 27rem;
   }
+  img.detail-course {
+    float:left;
+    margin-right: 15px;
+  }
 
 /*NAVBAR*/
 
@@ -252,6 +256,11 @@ a.slogan  {
      -ms-grid-row-align: center;
      align-self: center; }
 
+img.avatar {
+  float:left;
+  margin-right: 15px;
+}
+
 /*SESSIONS*/
 
 h1.activities {
@@ -277,11 +286,11 @@ li.sessions  {
  list-style-type: none;
 }
 
-.mentor-info {
+/* .mentor-info {
   float: right;
   margin: 3rem 60rem 0 0rem;
+} */
 
-}
 a.mentorinfo {
   color: #666666;
   font-size: 18px;

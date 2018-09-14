@@ -10,19 +10,16 @@ block content
       .col-md-10.bg-light.mx-auto
         h2.course_detail.text-center.mb-5.text-primary
           a.text-warning(href=`/courses/${course.slug}`) #{course.name}
-    .row
       .col-md-10.mx-auto.bg-white
         .course_description.mt-5
-          img(src=`/uploads/${course.photo || 'rev5.jpg'}`)
-        p #{course.description}
+          img.detail-course.pb-5(src=`/uploads/${course.photo || 'rev5.jpg'}`)
+          p #{course.description}
     .row
       .col-md-10.avatar-mentor.bg-white.mx-auto.mt-5
-        img(src=`${course.mentor.gravatar}`).rounded-circle.mt-5
-
-        .col-md-2.mentor-info.bg-white
-          a.mentorinfo(href=`/user/account/${course.mentor.id}`)
-            p.mt-5 #{course.mentor.name}
-            i(class="fa fa-envelope" aria-hidden="true") #{course.mentor.email}
+        img.avatar(src=`${course.mentor.gravatar}`).rounded-circle.mt-5
+        a.mentorinfo(href=`/user/account/${course.mentor.id}`)
+          p.mt-5 #{course.mentor.name}
+          i(class="fa fa-envelope" aria-hidden="true") #{course.mentor.email}
     .row
       .col-md-10.mx-auto.bg-white
         a.button.btn.btn-warning.btn-lg.mt-5(href=`/user/account/${course.mentor.id}`) Voir profil Mentor
