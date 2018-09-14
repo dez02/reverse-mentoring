@@ -7,11 +7,7 @@ body {
   /* background: #ffffff; */
 
 }
-  /* body:before {
-    content: '';
-    display: block;
-    height: 10px;
-    width: 100%; } */
+
 
 .inner {
   max-width: 900px;
@@ -46,7 +42,6 @@ label {
   margin-bottom: 0;
   font-size: 1.5rem;
   letter-spacing: 0px;
-  /* padding: 5px 0; */
   display: block; }
 
 form {
@@ -55,8 +50,7 @@ form {
   padding: 2rem;
   border-radius: 4px;
   box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
-  /* .form + .form {
-    margin-top: 4rem; } */
+
 
 .form-control {
   padding: 0.75rem .75rem;
@@ -72,8 +66,7 @@ form {
 
 .form-img{
   width: 200px;
-  /* height: 150px; */
-  /* margin-left: 70px; */
+
 }
 /*JUMBOTRON*/
 
@@ -136,7 +129,10 @@ span.header {
       align-items: flex-end; }
 
 .course__action {
-  font-size: 10px; }
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
   .course__action svg {
     width: 25px;
     fill: deeppink; }
@@ -170,8 +166,8 @@ span.header {
   .fa.fa-trash-o {
     color: cadetblue;
     font-size: 22px;
-    margin-left: 27rem;
   }
+
   img.detail-course {
     float:left;
     margin-right: 15px;
@@ -278,26 +274,14 @@ a.session {
  justify-content: flex-end;
 }
 
-/* button.addsession {
- border-radius: 10px;
-} */
-
 li.sessions  {
  list-style-type: none;
 }
-
-/* .mentor-info {
-  float: right;
-  margin: 3rem 60rem 0 0rem;
-} */
 
 a.mentorinfo {
   color: #666666;
   font-size: 18px;
 }
- /* {
-  margin: 3rem 3rem 0 10rem;
-} */
 
 .button-session {
   border-radius: 15px;
@@ -446,9 +430,7 @@ a.mentorinfo {
   .review p {
     white-space: pre-wrap; }
 
-/*
-  Reviewer Form
- */
+/* Reviewer Form */
  .reviewer form {
    width: 100%;
  }
@@ -508,17 +490,6 @@ a.mentorinfo {
     .reviewer__meta > * {
       -ms-flex: 1;
           flex: 1; }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Document
